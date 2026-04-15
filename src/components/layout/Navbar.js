@@ -54,7 +54,7 @@ export default function Navbar() {
     { name: "About Us", href: "/about-us" },
     { 
       name: "Venue/Hall", 
-      href: "/venue", 
+      href: "/venue-hall", 
       hasDropdown: true,
       subLinks: [
         { name: "The Vestibules", href: "/venue/vestibules" },
