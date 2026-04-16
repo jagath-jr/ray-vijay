@@ -57,9 +57,9 @@ export default function Navbar() {
       href: "/venue-hall", 
       hasDropdown: true,
       subLinks: [
-        { name: "The Vestibules", href: "/venue/vestibules" },
-        { name: "The Grand Temple", href: "/venue/grand-temple" },
-        { name: "Tower Doors & Foyer", href: "/venue/tower-doors" },
+       // { name: "The Vestibules", href: "/venue/vestibules" },
+       // { name: "The Grand Temple", href: "/venue/grand-temple" },
+        //{ name: "Tower Doors & Foyer", href: "/venue/tower-doors" },
       ]
     },
     { name: "Gallery", href: "/gallery" },
