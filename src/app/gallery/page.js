@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link"; // <-- Added import
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -23,15 +24,15 @@ export default function Gallery() {
 
   // Dummy data for gallery images (Assigning categories for the filter to work)
   const galleryImages = [
-    { id: 1, src: "/path-to-image-1.jpg", category: "Weddings" },
-    { id: 2, src: "/path-to-image-2.jpg", category: "Receptions" },
-    { id: 3, src: "/path-to-image-3.jpg", category: "Weddings" },
-    { id: 4, src: "/path-to-image-4.jpg", category: "Corporate Events" },
-    { id: 5, src: "/path-to-image-5.jpg", category: "Conferences" },
-    { id: 6, src: "/path-to-image-6.jpg", category: "Weddings" },
-    { id: 7, src: "/path-to-image-7.jpg", category: "Receptions" },
-    { id: 8, src: "/path-to-image-8.jpg", category: "Weddings" },
-    { id: 9, src: "/path-to-image-9.jpg", category: "Corporate Events" },
+    { id: 1, src: "/gallery-img-1.png", category: "Weddings" },
+    { id: 2, src: "/gallery-img-2.png", category: "Receptions" },
+    { id: 3, src: "/gallery-img-3.png", category: "Weddings" },
+    { id: 4, src: "/gallery-img-4.png", category: "Corporate Events" },
+    { id: 5, src: "/gallery-img-5.png", category: "Conferences" },
+    { id: 6, src: "/gallery-img-6.png", category: "Weddings" },
+    { id: 7, src: "/gallery-img-3.png", category: "Receptions" },
+    { id: 8, src: "/gallery-img-2.png", category: "Weddings" },
+    { id: 9, src: "/gallery-img-1.png", category: "Corporate Events" },
   ];
 
   // Filter logic
@@ -151,15 +152,18 @@ export default function Gallery() {
           </h2>
           
           <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
-            Reach Out To Us To See How We Can Do It For You. Let&apos;s Join Hands For A Great Future..
+            Reach Out To Us To See How We Can Do It For You. Let's Join Hands For A Great Future..
           </p>
 
-          <button className="bg-white text-[#5e1927] flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg">
+          <Link 
+            href="/contact" 
+            className="bg-white text-[#5e1927] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg"
+          >
             Contact Us
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
               <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
             </svg>
-          </button>
+          </Link>
         </div>
       </section>
 

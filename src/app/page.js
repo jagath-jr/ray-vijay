@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // Register the ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -10,11 +12,13 @@ if (typeof window !== "undefined") {
 }
 
 export default function Home() {
+  const router = useRouter();
   const heroTextRef = useRef(null);
   const welcomeSectionRef = useRef(null);
   const spacesSectionRef = useRef(null);
   const testimonialsSectionRef = useRef(null);
   const ctaSectionRef = useRef(null);
+  const mainRef = useRef(null);
 
   // Data for the Welcome section stats
   const stats = [
@@ -30,19 +34,19 @@ export default function Home() {
       title: "The Vestibules",
       description:
         "Connected to The Grand Temple, The Vestibules embody sophistication and charm. Available for exclusive hire, this remarkable space effortlessly transforms into three distinct areas using ornate dividing doors.",
-      image: "/path-to-vestibules.jpg",
+      image: "/spaces-features-section-img-1.jpg",
     },
     {
       title: "The Grand Temple",
       description:
         "Immerse yourself in the awe-inspiring grandeur of the Grand Temple featuring a meticulously handcrafted mosaic ceiling and a timeless sense of elegance.",
-      image: "/path-to-temple.jpg",
+      image: "/spaces-features-section-img-2.jpg",
     },
     {
       title: "The Tower Doors & Foyer",
       description:
         "The iconic bronze doors, a striking centrepiece in the heart of Covent Garden, are only open exclusively to invited guests. Beyond these majestic doors lies a marble entrance hall, leading to the original cloakroom.",
-      image: "/path-to-foyer.jpg",
+      image: "/spaces-features-section-img-3.jpg",
     },
   ];
 
@@ -52,10 +56,12 @@ export default function Home() {
       title: "Fully Air-Conditioned",
       description: "Climate-controlled comfort throughout all venues",
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 7.756a4.5 4.5 0 1 0 0 8.488M7.5 10.5h5.25a2.25 2.25 0 0 0 0-4.5h-3.659M5.25 13.5h8.25a2.25 2.25 0 0 1 0 4.5h-5.25" />
-        </svg>
-      ),
+  <img 
+    src="/air.svg" 
+    alt="air" 
+    className="w-10 h-10" 
+  />
+),
     },
     {
       title: "Advanced AV Systems",
@@ -93,15 +99,40 @@ export default function Home() {
       name: "Jenny Wilson",
       company: "Grower.io",
       text: "We love Landingfolio! Our designers were using it for their projects, so we already knew what kind of design they want.",
-      image: "/path-to-jenny.jpg",
+      image: "/testimatials-section-img-1.png",
     },
     {
       name: "Devon Lane",
       company: "DLDesign.co",
       text: "We love Landingfolio! Our designers were using it for their projects, so we already knew what kind of design they want.",
-      image: "/path-to-devon.jpg",
+      image: "/testimatials-section-img-2.png",
     },
   ];
+
+  // Navigation handler with GSAP animation
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    
+    // Create exit animation timeline
+    const tl = gsap.timeline({
+      onComplete: () => {
+        router.push("/contact");
+      }
+    });
+
+    // Animate out the main content
+    tl.to(mainRef.current, {
+      opacity: 0,
+      y: -50,
+      duration: 0.8,
+      ease: "power2.inOut",
+    })
+    .to(mainRef.current, {
+      scale: 0.95,
+      duration: 0.3,
+      ease: "power2.in",
+    }, "-=0.4");
+  };
 
   useEffect(() => {
     // 1. Hero Section Animation
@@ -157,7 +188,7 @@ export default function Home() {
         scrollTrigger: { trigger: testimonialsSectionRef.current, start: "top 80%", toggleActions: "play none none reverse" },
       });
 
-      // Testimonial Counter Animation (NEW)
+      // Testimonial Counter Animation
       const testimonialCounters = gsap.utils.toArray(".testimonial-counter");
       testimonialCounters.forEach((counter) => {
         const targetValue = parseInt(counter.getAttribute("data-target"), 10);
@@ -188,7 +219,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-white min-h-screen overflow-hidden">
+    <main ref={mainRef} className="bg-white min-h-screen overflow-hidden">
       {/* ================= HERO SECTION ================= */}
       <section
         className="relative w-full h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
@@ -291,7 +322,6 @@ export default function Home() {
       <section ref={testimonialsSectionRef} className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto text-center">
         <div className="testimonial-header mb-16 md:mb-24">
           <p className="text-[#6A2834] text-lg md:text-xl font-serif mb-4">
-            {/* Added the dynamic counter span here */}
             <span className="testimonial-counter" data-target="3940">0</span>+ Happy Landingfolio Users
           </p>
           <h2 className="text-[#6A2834] text-4xl md:text-5xl lg:text-6xl font-serif tracking-wide">
@@ -302,14 +332,11 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 text-left">
           {testimonialsData.map((testimonial, index) => (
             <div key={index} className="testimonial-card flex flex-col sm:flex-row items-center sm:items-start gap-6 lg:gap-8">
-              {/* Profile Image */}
               <div className="w-32 h-32 sm:w-40 sm:h-40 shrink-0 overflow-hidden rounded-2xl bg-gray-200 shadow-sm">
                 <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
               </div>
               
-              {/* Content */}
               <div className="flex flex-col flex-1 text-center sm:text-left">
-                {/* 5 Stars SVG */}
                 <div className="flex items-center justify-center sm:justify-start gap-1 mb-4 text-[#c99f36]">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -317,11 +344,9 @@ export default function Home() {
                     </svg>
                   ))}
                 </div>
-                {/* Review Text */}
                 <p className="text-black text-base md:text-lg font-medium leading-relaxed mb-6">
                   &quot;{testimonial.text}&quot;
                 </p>
-                {/* Author Info */}
                 <p className="text-sm md:text-base font-bold text-black">
                   {testimonial.name} <span className="text-gray-400 font-normal ml-2">{testimonial.company}</span>
                 </p>
@@ -331,7 +356,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= CTA SECTION ================= */}
+{/* ================= CTA SECTION ================= */}
       <section className="px-6 md:px-12 pb-20 md:pb-32 max-w-[1200px] mx-auto">
         <div 
           ref={ctaSectionRef} 
@@ -345,19 +370,21 @@ export default function Home() {
           </h2>
           
           <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
-            Reach Out To Us To See How We Can Do It For You. Let&apos;s Join Hands For A Great Future..
+            Reach Out To Us To See How We Can Do It For You. Let's Join Hands For A Great Future..
           </p>
 
-          <button className="bg-white text-[#5e1927] flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300">
+          {/* Changed <button> to <Link> and added href="/contact" */}
+          <Link 
+            href="/contact" 
+            className="bg-white text-[#5e1927] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+          >
             Contact Us
             {/* Arrow Circle SVG */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
               <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
             </svg>
-          </button>
+          </Link>
         </div>
-      </section>
-
-    </main>
+      </section>    </main>
   );
 }
