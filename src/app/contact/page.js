@@ -10,6 +10,20 @@ if (typeof window !== "undefined") {
 
 export default function Contact() {
   const mainRef = useRef(null);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    eventType: "",
+    eventDate: "",
+    guests: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({
+    type: "",
+    message: "",
+  });
   
   // State for the FAQ accordion
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
@@ -44,6 +58,54 @@ export default function Contact() {
 
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? -1 : index);
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: "", message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setSubmitStatus({
+        type: "success",
+        message: "Message sent successfully. We will contact you soon.",
+      });
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        eventType: "",
+        eventDate: "",
+        guests: "",
+        message: "",
+      });
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: error.message || "Unable to send message right now.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -214,15 +276,18 @@ export default function Contact() {
               <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-4">Book Your Dream Event</h2>
               <p className="text-gray-500 mb-8 font-light">Fill out the form below and our event specialists will get back to you shortly</p>
 
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 {/* Full Name */}
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-medium text-gray-700">Full Name *</label>
                   <input 
                     type="text" 
+                    name="fullName"
                     placeholder="Enter your full name" 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
+                    value={formData.fullName}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -232,8 +297,11 @@ export default function Contact() {
                   <label className="text-sm font-medium text-gray-700">Email Address *</label>
                   <input 
                     type="email" 
+                    name="email"
                     placeholder="your.email@example.com" 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
+                    value={formData.email}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -243,8 +311,11 @@ export default function Contact() {
                   <label className="text-sm font-medium text-gray-700">Phone Number *</label>
                   <input 
                     type="tel" 
+                    name="phone"
                     placeholder="+91 XXXXX XXXXX" 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
+                    value={formData.phone}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -252,8 +323,14 @@ export default function Contact() {
                 {/* Event Type */}
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-medium text-gray-700">Event Type *</label>
-                  <select className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full bg-white text-gray-500" required>
-                    <option value="" disabled selected>Select event type</option>
+                  <select
+                    name="eventType"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full bg-white text-black"
+                    value={formData.eventType}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="" disabled>Select event type</option>
                     <option value="wedding">Wedding</option>
                     <option value="corporate">Corporate Event</option>
                     <option value="exhibition">Exhibition</option>
@@ -266,7 +343,10 @@ export default function Contact() {
                   <label className="text-sm font-medium text-gray-700">Event Date</label>
                   <input 
                     type="date" 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-gray-500"
+                    name="eventDate"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
+                    value={formData.eventDate}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -275,8 +355,11 @@ export default function Contact() {
                   <label className="text-sm font-medium text-gray-700">Number of Guests</label>
                   <input 
                     type="number" 
+                    name="guests"
                     placeholder="Approximate guest count" 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
+                    value={formData.guests}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -284,17 +367,33 @@ export default function Contact() {
                 <div className="flex flex-col gap-2 md:col-span-2">
                   <label className="text-sm font-medium text-gray-700">Message</label>
                   <textarea 
+                    name="message"
                     rows="5"
                     placeholder="Tell us about your event requirements, preferences, or any questions you have..." 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full resize-none"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full resize-none text-black"
+                    value={formData.message}
+                    onChange={handleChange}
                   ></textarea>
                 </div>
 
                 {/* Submit Button */}
                 <div className="md:col-span-2 mt-4">
-                  <button type="submit" className="w-full bg-[#8b1820] hover:bg-[#6A2834] text-white font-bold py-4 rounded-md transition-colors shadow-lg">
-                    Send Message
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#8b1820] hover:bg-[#6A2834] text-white font-bold py-4 rounded-md transition-colors shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
+                  {submitStatus.message ? (
+                    <p
+                      className={`mt-3 text-sm ${
+                        submitStatus.type === "success" ? "text-green-600" : "text-red-500"
+                      }`}
+                    >
+                      {submitStatus.message}
+                    </p>
+                  ) : null}
                   <p className="text-center text-gray-400 text-xs mt-4 flex items-center justify-center gap-1">
                     <span className="text-[#cba328]">🛡️</span> Your information is secure and confidential
                   </p>
