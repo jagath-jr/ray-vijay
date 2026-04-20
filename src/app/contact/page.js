@@ -285,7 +285,7 @@ export default function Contact() {
                     type="text" 
                     name="fullName"
                     placeholder="Enter your full name" 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
                     value={formData.fullName}
                     onChange={handleChange}
                     required
@@ -299,7 +299,7 @@ export default function Contact() {
                     type="email" 
                     name="email"
                     placeholder="your.email@example.com" 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -313,7 +313,7 @@ export default function Contact() {
                     type="tel" 
                     name="phone"
                     placeholder="+91 XXXXX XXXXX" 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
                     value={formData.phone}
                     onChange={handleChange}
                     required
@@ -325,7 +325,7 @@ export default function Contact() {
                   <label className="text-sm font-medium text-gray-700">Event Type *</label>
                   <select
                     name="eventType"
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full bg-white text-gray-500"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full bg-white text-black"
                     value={formData.eventType}
                     onChange={handleChange}
                     required
@@ -344,7 +344,7 @@ export default function Contact() {
                   <input 
                     type="date" 
                     name="eventDate"
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-gray-500"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
                     value={formData.eventDate}
                     onChange={handleChange}
                   />
@@ -357,7 +357,7 @@ export default function Contact() {
                     type="number" 
                     name="guests"
                     placeholder="Approximate guest count" 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full text-black"
                     value={formData.guests}
                     onChange={handleChange}
                   />
@@ -370,7 +370,7 @@ export default function Contact() {
                     name="message"
                     rows="5"
                     placeholder="Tell us about your event requirements, preferences, or any questions you have..." 
-                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full resize-none"
+                    className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full resize-none text-black"
                     value={formData.message}
                     onChange={handleChange}
                   ></textarea>
