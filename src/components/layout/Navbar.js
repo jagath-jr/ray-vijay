@@ -51,15 +51,15 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
+    { name: "About Us", href: "/about-us" },
     { 
       name: "Venue/Hall", 
-      href: "/venue", 
+      href: "/venue-hall", 
       hasDropdown: true,
       subLinks: [
-        { name: "The Vestibules", href: "/venue/vestibules" },
-        { name: "The Grand Temple", href: "/venue/grand-temple" },
-        { name: "Tower Doors & Foyer", href: "/venue/tower-doors" },
+       // { name: "The Vestibules", href: "/venue/vestibules" },
+       // { name: "The Grand Temple", href: "/venue/grand-temple" },
+        //{ name: "Tower Doors & Foyer", href: "/venue/tower-doors" },
       ]
     },
     { name: "Gallery", href: "/gallery" },
