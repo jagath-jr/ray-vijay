@@ -246,7 +246,7 @@ export default function Home() {
           <div className="flex flex-col gap-10 md:gap-14">
             {stats.map((stat, index) => (
               <div key={index} className="welcome-anim flex items-center gap-6 md:gap-8">
-                <div className="text-6xl md:text-[80px] font-serif text-black leading-none w-[160px] md:w-[240px] text-right shrink-0 flex justify-end">
+                <div className="text-6xl md:text-[80px]  text-black leading-none w-[160px] md:w-[240px] text-right shrink-0 flex justify-end">
                   <span className="counter-value" data-target={stat.target}>0</span>
                   <span>{stat.suffix}</span>
                 </div>
@@ -329,7 +329,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 font-poppins lg:gap-16 text-left">
           {testimonialsData.map((testimonial, index) => (
             <div key={index} className="testimonial-card flex flex-col sm:flex-row items-center sm:items-start gap-6 lg:gap-8">
               <div className="w-32 h-32 sm:w-40 sm:h-40 shrink-0 overflow-hidden rounded-2xl bg-gray-200 shadow-sm">
@@ -385,6 +385,8 @@ export default function Home() {
             </svg>
           </Link>
         </div>
-      </section>    </main>
+      </section>  
+    
+      </main>
   );
 }

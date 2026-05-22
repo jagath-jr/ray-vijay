@@ -21,21 +21,21 @@ export default function Footer() {
           {/* Column 1: Brand Info */}
           {/* Added text-center & items-center for mobile, resetting on sm screens */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left sm:pr-4">
-            <h2 className="text-white text-3xl font-serif font-bold tracking-wide mb-1">
+            <h2 className="text-white text-3xl font-georgia font-bold tracking-wide mb-1">
               Ray Vijay Centre
             </h2>
-            <p className="text-white/80 text-sm font-light mb-6 tracking-wider">
+            <p className="text-white/80 text-sm font-inter mb-6 tracking-wider">
               for Conventions
             </p>
-            <p className="text-white/80 text-sm leading-relaxed max-w-xs">
+            <p className="text-white/80 text-sm leading-relaxed font-inter max-w-xs">
               A Landmark Destination for Grand Celebrations in Thiruvananthapuram
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-            <h3 className="text-white text-lg font-bold mb-6">Quick Links</h3>
-            <ul className="flex flex-col items-center sm:items-start gap-4">
+            <h3 className="text-white text-lg font-inter font-bold mb-6">Quick Links</h3>
+            <ul className="flex flex-col items-center font-inter sm:items-start gap-4">
               {['Home', 'About Us', 'Venue/Hall', 'Gallery', 'Contact'].map((item, index) => (
                 <li key={index}>
                   <Link 
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           {/* Column 3: Contact Us */}
-          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+          <div className="flex flex-col items-center sm:items-start text-center font-inter sm:text-left">
             <h3 className="text-white text-lg font-bold mb-6">Contact Us</h3>
             <ul className="flex flex-col items-center sm:items-start gap-4 text-white/80 text-sm">
               <li>Thiruvananthapuram, Kerala</li>
@@ -62,7 +62,7 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Follow Us */}
-          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+          <div className="flex flex-col items-center sm:items-start text-center font-inter sm:text-left">
             <h3 className="text-white text-lg font-bold mb-6">Follow Us</h3>
             {/* Added justify-center for mobile social icons */}
             <div className="flex items-center justify-center sm:justify-start gap-4">
@@ -101,7 +101,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright Section */}
-        <div className="pt-8 flex justify-center text-center">
+        <div className="pt-8 flex justify-center font-inter text-center">
           <p className="text-white/60 text-xs md:text-sm">
             © 2026 Ray Vijay Centre for Conventions. All rights reserved.
           </p>
