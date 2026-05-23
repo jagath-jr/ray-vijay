@@ -23,9 +23,9 @@ export default function Home() {
   // Data for the Welcome section stats
   const stats = [
     { target: 8, suffix: "", text: "Dedicated Halls" },
-    { target: 25, suffix: "", text: "Years of Service" },
-    { target: 3500, suffix: "", text: "Years of Service" },
-    { target: 4000, suffix: "+", text: "Happy Customers" },
+    { target: 25000, suffix: "+", text: "Sq. Ft Venue Space" },
+    { target: 4000, suffix: "+", text: "Guest Capacity" },
+    { target: 500, suffix: "+", text: "Parking Capacity" },
   ];
 
   // Data for the Spaces section
@@ -259,11 +259,13 @@ export default function Home() {
 
           <div className="flex flex-col items-start pt-4 md:pt-2 lg:pl-10">
             <h3 className="welcome-anim text-lg md:text-xl font-bold uppercase tracking-widest mb-6 leading-snug">
-              An exquisite art deco icon nestled in the heart of Covent Garden.
+              A PLACE WHERE EVERY OCCASION BECOMES EXTRAORDINARY
             </h3>
             <p className="welcome-anim text-base md:text-lg mb-10 leading-relaxed font-light text-[#6A2834]/90">
-              This Grade II* listed venue is a masterpiece of timeless elegance, showcasing breathtaking architecture and opulent interiors. From the awe-inspiring mosaic ceilings of the Grand Temple to the enchanting intimacy of its unique spaces, every corner of this historic landmark tells a story of grandeur and heritage. Whether you&apos;re hosting a grand event or an intimate gathering, 60 Great Queen Street promises an unforgettable experience from the moment you step inside.
-            </p>
+  From lavish wedding receptions and elegant engagement ceremonies to corporate conferences and rooftop celebrations, every venue at Ray Vijay Centre for Convention is thoughtfully designed to deliver sophistication, comfort, and unforgettable experiences.
+  <br /><br />
+  Whether you are planning an intimate gathering or a grand event, our versatile spaces and dedicated hospitality team ensure every detail is flawlessly executed.
+</p>
             <button className="welcome-anim bg-[#6A2834] text-white text-sm md:text-base font-bold uppercase tracking-[0.2em] py-4 px-8 hover:bg-[#4d1d26] transition-colors duration-300">
               View Brochure
             </button>
