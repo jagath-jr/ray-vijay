@@ -5,10 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function AboutUs() {
   const mainRef = useRef(null);
   const ctaSectionRef = useRef(null);
@@ -23,6 +19,9 @@ export default function AboutUs() {
   ];
 
   useEffect(() => {
+    // Safely register plugin inside the client-side hook
+    gsap.registerPlugin(ScrollTrigger);
+
     const ctx = gsap.context(() => {
       // 1. Header Animation
       gsap.from(".page-title", {
@@ -47,7 +46,8 @@ export default function AboutUs() {
         },
       });
 
-      // 3. Partners Section (Fades in the title, text, and the sliding container)
+      // 3. Partners Section 
+      // (This was breaking because the HTML was missing below!)
       gsap.from(".partners-fade-in", {
         y: 30,
         opacity: 0,
@@ -130,10 +130,8 @@ export default function AboutUs() {
             <h2 className="text-[#6A2834] text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
               Our Story
             </h2>
-            <p className="text-gray-800 text-sm md:text-base font-bold mb-2">Concept:</p>
-            <p className="text-gray-800 text-sm md:text-base leading-relaxed">
-              The Anantara Event Hall is the crown jewel of the Parekkat Convention Centre, offering a premier space for a variety of high-profile events. The Anantara Event Hall combines elegance, flexibility, and top-notch facilities to ensure your event is unforgettable. Whether you are planning a lavish wedding, a corporate conference, or a live entertainment show, Anantara provides the perfect setting to make your event a success.
-            </p>
+            <p className="text-[#6C031D] text-sm md:text-base font-bold mb-2">
+            Ray Vijay Centre for Convention was created with a vision to redefine celebrations through elegance, luxury, and unforgettable experiences. Designed as a destination for weddings, corporate gatherings, and cultural events, the convention centre blends sophisticated spaces with exceptional hospitality. Every corner of Ray Vijay Centre reflects our commitment to creating memorable moments where people come together to celebrate life’s most special occasions.</p>
           </div>
           <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1 md:order-2">
             <img 
@@ -157,59 +155,12 @@ export default function AboutUs() {
             <h2 className="text-[#6A2834] text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
               Our vision
             </h2>
-            <p className="text-gray-800 text-sm md:text-base font-bold mb-2">Concept:</p>
-            <p className="text-gray-800 text-sm md:text-base leading-relaxed">
-              The Anantara Event Hall is the crown jewel of the Parekkat Convention Centre, offering a premier space for a variety of high-profile events. The Anantara Event Hall combines elegance, flexibility, and top-notch facilities to ensure your event is unforgettable. Whether you are planning a lavish wedding, a corporate conference, or a live entertainment show, Anantara provides the perfect setting to make your event a success.
-            </p>
+            <p className="text-[#6C031D] text-sm md:text-base font-bold mb-2">
+            Ray Vijay Centre for Convention is designed to be a landmark destination for weddings, corporate gatherings, and grand celebrations. Combining elegant architecture, versatile event spaces, and premium hospitality, the convention centre creates unforgettable experiences for every occasion. Whether hosting luxurious weddings, business conferences, or cultural events, Ray offers the perfect setting with sophistication, comfort, and world-class event facilities.</p>
+            
           </div>
         </div>
 
-      </section>
-
-      {/* ================= PARTNERS SECTION ================= */}
-      <section className="partners-section bg-[#fdfaf6] py-20 md:py-28 px-6 text-center overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="partners-fade-in text-3xl md:text-5xl font-serif text-[#6A2834] uppercase tracking-widest mb-6">
-            Our Partners
-          </h2>
-          <p className="partners-fade-in text-gray-600 text-sm md:text-base font-light max-w-2xl mx-auto mb-16 leading-relaxed">
-            We work with event partners who provide unparalleled expertise and creativity, ensuring your event at 60 Great Queen Street is flawlessly executed.
-          </p>
-
-          {/* Sliding Logos Wrapper */}
-          <div className="partners-fade-in relative w-full overflow-hidden mb-16">
-            {/* The inner track that physically slides */}
-            <div className="animate-marquee gap-10 md:gap-16 lg:gap-24 items-center">
-              
-              {/* Render Set 1 */}
-              {partnerLogos.map((logo, index) => (
-                <div key={`set1-${index}`} className="shrink-0 flex items-center justify-center w-32 md:w-48 h-20">
-                  <img 
-                    src={logo.src} 
-                    alt={logo.name} 
-                    className="max-w-full max-h-full object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                  />
-                </div>
-              ))}
-              
-              {/* Render Set 2 (Exact duplicate to create the seamless loop) */}
-              {partnerLogos.map((logo, index) => (
-                <div key={`set2-${index}`} className="shrink-0 flex items-center justify-center w-32 md:w-48 h-20">
-                  <img 
-                    src={logo.src} 
-                    alt={logo.name} 
-                    className="max-w-full max-h-full object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                  />
-                </div>
-              ))}
-
-            </div>
-          </div>
-
-          <button className="partners-fade-in bg-[#6A2834] text-white text-xs md:text-sm font-bold uppercase tracking-[0.2em] py-4 px-10 hover:bg-[#4d1d26] transition-colors duration-300">
-            Learn More
-          </button>
-        </div>
       </section>
 
       {/* ================= EXHIBITIONS BANNER ================= */}
@@ -248,33 +199,34 @@ export default function AboutUs() {
       </section>
 
       {/* ================= CTA SECTION ================= */}
-      <section className="px-6 md:px-12 py-20 md:pb-32 max-w-[1200px] mx-auto">
-        <div 
-          ref={ctaSectionRef} 
-          className="bg-[#5e1927] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
-        >
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4">
-            Get In Touch
-          </h3>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
-            Want A Schedule Visit / Book A Event ?
-          </h2>
-          
-          <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
-            Reach Out To Us To See How We Can Do It For You. Let's Join Hands For A Great Future..
-          </p>
+<section className="px-6 md:px-12 py-20 md:py-32 mx-auto">
+  <div 
+    ref={ctaSectionRef} 
+    className="bg-[#800000] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
+  >
+    <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4 font-['Inter']">
+      Planning an Event?
+    </h3>
+    <h2 className="font-['Inter'] text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
+      Schedule a visit or book your event today.
+    </h2>
+    
+    <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
+      Reach out to us to see how we can do it for you. Let’s join hands for a great future..
+    </p>
 
-          <Link 
-            href="/contact" 
-            className="bg-white text-[#5e1927] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
-          >
-            Contact Us
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-              <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+    <Link 
+      href="/contact" 
+      className="font-['Inter'] bg-white text-[#800000] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+    >
+      Contact Us
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+        <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
+      </svg>
+    </Link>
+  </div>
+</section>
+
     </main>
   );
 }

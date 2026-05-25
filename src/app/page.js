@@ -31,21 +31,21 @@ export default function Home() {
   // Data for the Spaces section
   const spacesData = [
     {
-      title: "The Vestibules",
+      title: "RAY ROYAL",
       description:
-        "Connected to The Grand Temple, The Vestibules embody sophistication and charm. Available for exclusive hire, this remarkable space effortlessly transforms into three distinct areas using ornate dividing doors.",
+        "Luxury banquet space designed for grand weddings, receptions, and premium celebrations. Featuring elegant interiors and a sophisticated ambiance for unforgettable events.",
       image: "/spaces-features-section-img-1.jpg",
     },
     {
-      title: "The Grand Temple",
+      title: "RAY MAJESTIC",
       description:
-        "Immerse yourself in the awe-inspiring grandeur of the Grand Temple featuring a meticulously handcrafted mosaic ceiling and a timeless sense of elegance.",
+        "Elegant event hall crafted for receptions, corporate gatherings, and social celebrations. Blending luxury interiors with spacious comfort for memorable guest experiences.",
       image: "/spaces-features-section-img-2.jpg",
     },
     {
-      title: "The Tower Doors & Foyer",
+      title: "RAY PRIVE",
       description:
-        "The iconic bronze doors, a striking centrepiece in the heart of Covent Garden, are only open exclusively to invited guests. Beyond these majestic doors lies a marble entrance hall, leading to the original cloakroom.",
+        "Modern conference and private event space designed for business meetings and exclusive gatherings. Offering a refined atmosphere with comfort, privacy, and professional elegance.",
       image: "/spaces-features-section-img-3.jpg",
     },
   ];
@@ -277,11 +277,11 @@ export default function Home() {
       <section ref={spacesSectionRef} className="relative w-full pt-16 md:pt-20">
         <div className="absolute inset-0 z-0 flex flex-col">
           <div className="h-48 md:h-64 bg-white w-full"></div>
-          <div className="flex-1 bg-[#5e1927] w-full"></div>
+          <div className="flex-1 bg-[#6C031D] w-full"></div>
         </div>
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-24 md:pb-32">
-          <h2 className="spaces-title text-[#6A2834] text-2xl md:text-3xl lg:text-4xl font-serif uppercase tracking-widest mb-10 md:mb-16">
+          <h2 className="spaces-title text-[#7F3947] text-2xl md:text-3xl lg:text-4xl font-serif uppercase tracking-widest mb-10 md:mb-16">
             Spaces
           </h2>
 
@@ -321,7 +321,7 @@ export default function Home() {
       </section>
 
       {/* ================= TESTIMONIALS SECTION ================= */}
-      <section ref={testimonialsSectionRef} className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto text-center">
+      {/* <section ref={testimonialsSectionRef} className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto text-center">
         <div className="testimonial-header mb-16 md:mb-24">
           <p className="text-[#6A2834] text-lg md:text-xl font-serif mb-4">
             <span className="testimonial-counter" data-target="3940">0</span>+ Happy Landingfolio Users
@@ -356,38 +356,36 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
 {/* ================= CTA SECTION ================= */}
-      <section className="px-6 md:px-12 pb-20 md:pb-32 max-w-[1200px] mx-auto">
-        <div 
-          ref={ctaSectionRef} 
-          className="bg-[#5e1927] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
-        >
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4">
-            Get In Touch
-          </h3>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
-            Want A Schedule Visit / Book A Event ?
-          </h2>
-          
-          <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
-            Reach Out To Us To See How We Can Do It For You. Let's Join Hands For A Great Future..
-          </p>
+<section className="px-6 md:px-12 py-20 md:py-32 mx-auto">
+  <div 
+    ref={ctaSectionRef} 
+    className="bg-[#800000] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
+  >
+    <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4 font-['Inter']">
+      Planning an Event?
+    </h3>
+    <h2 className="font-['Inter'] text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
+      Schedule a visit or book your event today.
+    </h2>
+    
+    <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
+      Reach out to us to see how we can do it for you. Let’s join hands for a great future..
+    </p>
 
-          {/* Changed <button> to <Link> and added href="/contact" */}
-          <Link 
-            href="/contact" 
-            className="bg-white text-[#5e1927] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
-          >
-            Contact Us
-            {/* Arrow Circle SVG */}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-              <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
-            </svg>
-          </Link>
-        </div>
-      </section>  
+    <Link 
+      href="/contact" 
+      className="font-['Inter'] bg-white text-[#800000] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+    >
+      Contact Us
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+        <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
+      </svg>
+    </Link>
+  </div>
+</section>
     
       </main>
   );
