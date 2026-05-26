@@ -16,7 +16,7 @@ export default function AboutUs() {
   const exhibitionImages = [
     "/path-to-exhibition-image.png", 
     "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop", // Corporate exhibition/stage
-   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2069&auto=format&fit=crop", // Luxury dining hall
+   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2069&auto=format&fit=crop", // Luxury dining halls
   ];
 
   // Distinct out-states (hidden states) for each slide to create different animations
