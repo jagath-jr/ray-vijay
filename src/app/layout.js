@@ -27,9 +27,23 @@ const poppins = Poppins({
 
 export const metadata = {
   title: 'Ray Vijay Centre For Conventions',
-  description: 'convention centre in Kerala, India. We offer state-of-the-art facilities and exceptional service for all your event needs.',
+  description: 'Convention centre in Kerala, India. We offer state-of-the-art facilities and exceptional service for all your event needs.',
+  openGraph: {
+    title: 'Ray Vijay Centre For Conventions',
+    description: 'Convention centre in Kerala, India.',
+    url: '',
+    siteName: 'Ray Vijay Centre',
+    images: [
+      {
+        url: '/Logo.png', // Or ideally, a larger feature image
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
 };
-
 export default function RootLayout({ children }) {
   return (
     // 3. Add poppins.variable to the class string

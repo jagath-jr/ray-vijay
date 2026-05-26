@@ -10,6 +10,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+
 // // 1. DATA ARRAY: Add or edit all your venues here easily
 // const venuesData = [
 //   {
