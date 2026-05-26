@@ -54,7 +54,7 @@ export default function Footer() {
             <h3 className="text-white text-lg font-bold mb-6">Contact Us</h3>
             <ul className="flex flex-col items-center sm:items-start gap-4 text-white/80 text-sm">
               <li>Thiruvananthapuram, Kerala</li>
-              <li>Phone: +91 471 XXX XXXX</li>
+              <li>Phone: +91 471 2 555 555</li>
               <li>
                 Email: <a href="mailto:info@rayvijaycenter.com" className="hover:text-[#cba328] transition-colors">info@rayvijaycenter.com</a>
               </li>

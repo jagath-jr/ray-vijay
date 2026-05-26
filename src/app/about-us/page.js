@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -8,6 +8,46 @@ import Link from "next/link";
 export default function AboutUs() {
   const mainRef = useRef(null);
   const ctaSectionRef = useRef(null);
+
+  // Exhibition Slider State
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Array of 3 Exhibition Images
+  const exhibitionImages = [
+    "/path-to-exhibition-image.png", 
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop", // Corporate exhibition/stage
+   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2069&auto=format&fit=crop", // Luxury dining hall
+  ];
+
+  // Distinct out-states (hidden states) for each slide to create different animations
+  const outAnimations = [
+    "opacity-0 scale-110",        // Slide 1: Zooms out & fades in
+    "opacity-0 translate-x-16",   // Slide 2: Slides in from the right
+    "opacity-0 translate-y-12",   // Slide 3: Slides up from the bottom
+  ];
+
+  // The active state that all slides transition to when visible
+  const activeAnimation = "opacity-100 scale-100 translate-x-0 translate-y-0";
+
+  // Slider controls
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % exhibitionImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + exhibitionImages.length) % exhibitionImages.length);
+  };
+
+  // Auto-play functionality
+  useEffect(() => {
+    // Automatically change slide every 5000ms (5 seconds)
+    const slideTimer = setTimeout(() => {
+      nextSlide();
+    }, 5000);
+
+    // Cleanup timer on component unmount or if the user manually clicks next/prev
+    return () => clearTimeout(slideTimer);
+  }, [currentSlide]); // Dependency on currentSlide resets the timer if manually clicked
 
   // Array of partner logos for the sliding animation
   const partnerLogos = [
@@ -19,74 +59,44 @@ export default function AboutUs() {
   ];
 
   useEffect(() => {
-    // Safely register plugin inside the client-side hook
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
       // 1. Header Animation
       gsap.from(".page-title", {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.2,
+        y: 30, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2,
       });
 
       // 2. Story & Vision Animations
       gsap.from(".story-block", {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out",
+        y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out",
         scrollTrigger: {
-          trigger: ".story-container",
-          start: "top 75%",
-          toggleActions: "play none none reverse",
+          trigger: ".story-container", start: "top 75%", toggleActions: "play none none reverse",
         },
       });
 
       // 3. Partners Section 
-      // (This was breaking because the HTML was missing below!)
       gsap.from(".partners-fade-in", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
+        y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power2.out",
         scrollTrigger: {
-          trigger: ".partners-section",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
+          trigger: ".partners-section", start: "top 80%", toggleActions: "play none none reverse",
         },
       });
 
       // 4. Exhibitions Banner
       gsap.from(".exhibition-content > *", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
+        y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power2.out",
         scrollTrigger: {
-          trigger: ".exhibitions-section",
-          start: "top 70%",
-          toggleActions: "play none none reverse",
+          trigger: ".exhibitions-section", start: "top 70%", toggleActions: "play none none reverse",
         },
       });
 
       // 5. CTA Section Animation
       if (ctaSectionRef.current) {
         gsap.from(ctaSectionRef.current, {
-          scale: 0.95,
-          y: 30,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
+          scale: 0.95, y: 30, opacity: 0, duration: 0.8, ease: "power2.out",
           scrollTrigger: {
-            trigger: ctaSectionRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
+            trigger: ctaSectionRef.current, start: "top 85%", toggleActions: "play none none reverse",
           },
         });
       }
@@ -98,16 +108,13 @@ export default function AboutUs() {
   return (
     <main ref={mainRef} className="bg-white min-h-screen overflow-hidden">
       
-      {/* Inline Styles for the Infinite Marquee Animation */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes marquee {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          display: flex;
-          width: max-content;
-          animation: marquee 25s linear infinite;
+          display: flex; width: max-content; animation: marquee 25s linear infinite;
         }
         .animate-marquee:hover {
           animation-play-state: paused;
@@ -122,7 +129,7 @@ export default function AboutUs() {
       </section>
 
       {/* ================= OUR STORY & VISION ================= */}
-      <section className="story-container max-w-[1200px] mx-auto px-6 md:px-12 pb-20 md:pb-32 flex flex-col gap-20 md:gap-32">
+      <section className="story-container max-w-[1200px] mx-auto px-6 md:px-12 pb-20 md:pb-15 flex flex-col gap-20 md:gap-10">
         
         {/* Row 1: Our Story */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
@@ -163,12 +170,21 @@ export default function AboutUs() {
 
       </section>
 
-      {/* ================= EXHIBITIONS BANNER ================= */}
+      {/* ================= EXHIBITIONS BANNER (AUTO-SLIDER WITH VARIED ANIMATIONS) ================= */}
       <section className="exhibitions-section relative w-full h-[600px] md:h-[700px] bg-gray-900 overflow-hidden flex items-end">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/path-to-exhibition-image.png')" }} 
-        ></div>
+        
+        {/* Dynamic Image Backgrounds */}
+        {exhibitionImages.map((imgSrc, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-all duration-[1200ms] ease-in-out ${
+              index === currentSlide ? activeAnimation : outAnimations[index]
+            }`}
+            style={{ backgroundImage: `url('${imgSrc}')` }}
+          ></div>
+        ))}
+        
+        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
         <div className="exhibition-content relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 pb-12 md:pb-20">
@@ -180,17 +196,43 @@ export default function AboutUs() {
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="flex gap-4">
-              <button className="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
+              {/* Previous Button */}
+              <button 
+                onClick={prevSlide}
+                className="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
+                aria-label="Previous image"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
               </button>
-              <button className="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
+              
+              {/* Next Button */}
+              <button 
+                onClick={nextSlide}
+                className="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
+                aria-label="Next image"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
               </button>
             </div>
+            
+            {/* Slide Indicators */}
+            <div className="hidden sm:flex gap-2">
+              {exhibitionImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentSlide ? "bg-white w-6" : "bg-white/50 hover:bg-white/80"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+
             <button className="border border-white/50 text-white text-xs md:text-sm tracking-[0.2em] uppercase py-3 px-8 hover:bg-white hover:text-black transition-colors">
               Enquire Now
             </button>
@@ -199,33 +241,33 @@ export default function AboutUs() {
       </section>
 
       {/* ================= CTA SECTION ================= */}
-<section className="px-6 md:px-12 py-20 md:py-32 mx-auto">
-  <div 
-    ref={ctaSectionRef} 
-    className="bg-[#800000] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
-  >
-    <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4 font-['Inter']">
-      Planning an Event?
-    </h3>
-    <h2 className="font-['Inter'] text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
-      Schedule a visit or book your event today.
-    </h2>
-    
-    <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
-      Reach out to us to see how we can do it for you. Let’s join hands for a great future..
-    </p>
+      <section className="px-6 md:px-12 py-20 md:py-15 mx-auto">
+        <div 
+          ref={ctaSectionRef} 
+          className="bg-[#800000] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
+        >
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4 font-['Inter']">
+            Planning an Event?
+          </h3>
+          <h2 className="font-['Inter'] text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
+            Schedule a visit or book your event today.
+          </h2>
+          
+          <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
+            Reach out to us to see how we can do it for you. Let’s join hands for a great future..
+          </p>
 
-    <Link 
-      href="/contact" 
-      className="font-['Inter'] bg-white text-[#800000] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
-    >
-      Contact Us
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-        <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
-      </svg>
-    </Link>
-  </div>
-</section>
+          <Link 
+            href="/contact" 
+            className="font-['Inter'] bg-white text-[#800000] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+          >
+            Contact Us
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+              <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
+            </svg>
+          </Link>
+        </div>
+      </section>
 
     </main>
   );

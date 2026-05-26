@@ -49,6 +49,7 @@ export default function Navbar() {
     return () => { document.body.style.overflow = "unset"; };
   }, [isMobileMenuOpen]);
 
+  // UPDATED: Activated subLinks with your 8 new venues
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
@@ -57,9 +58,14 @@ export default function Navbar() {
       href: "/venue-hall", 
       hasDropdown: true,
       subLinks: [
-       // { name: "The Vestibules", href: "/venue/vestibules" },
-       // { name: "The Grand Temple", href: "/venue/grand-temple" },
-        //{ name: "Tower Doors & Foyer", href: "/venue/tower-doors" },
+        { name: "Ray Signature", href: "/venue-hall#ray-signature" },
+        { name: "Ray Heritage", href: "/venue-hall#ray-heritage" },
+        { name: "Ray Banquet", href: "/venue-hall#ray-banquet" },
+        { name: "Ray Gateway", href: "/venue-hall#ray-gateway" },
+        { name: "Ray Privé", href: "/venue-hall#ray-prive" },
+        { name: "Ray Skywalk", href: "/venue-hall#ray-skywalk" },
+        { name: "Ray Royal Suites", href: "/venue-hall#ray-royal-suites" },
+        { name: "Ray Atrium", href: "/venue-hall#ray-atrium" }
       ]
     },
     { name: "Gallery", href: "/gallery" },
@@ -81,9 +87,6 @@ export default function Navbar() {
     >
       
       {/* ================= LOGO AREA ================= */}
-      {/* UPDATED: Removed bg-white/95 and shadow-sm so it is completely transparent 
-        The background now inherits from the parent <nav>
-      */}
       <div className="px-4 md:px-8 py-3 md:py-4 min-w-[120px] md:min-w-[180px] flex justify-center items-center relative z-50 bg-transparent">
         <Link href="/">
           <img 

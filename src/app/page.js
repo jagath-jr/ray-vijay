@@ -300,10 +300,13 @@ export default function Home() {
           </div>
 
           <div className="w-full flex justify-center mt-8 md:mt-16">
-            <button className="spaces-btn border border-white/40 text-white bg-white/5 hover:bg-white/20 backdrop-blur-sm text-xs md:text-sm font-bold uppercase tracking-[0.2em] py-4 px-10 transition-colors duration-300">
-              View All Spaces
-            </button>
-          </div>
+  <button 
+    onClick={() => router.push("/venue-hall")}
+    className="spaces-btn border border-white/40 text-white bg-white/5 hover:bg-white/20 backdrop-blur-sm text-xs md:text-sm font-bold uppercase tracking-[0.2em] py-4 px-10 transition-colors duration-300"
+  >
+    View All Spaces
+  </button>
+</div>
 
           {/* Features Box */}
           <div className="features-container mt-20 md:mt-32 border border-white/20 py-12 px-6 lg:px-12 rounded-sm">
