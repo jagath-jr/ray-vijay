@@ -191,7 +191,7 @@ export default function AboutUs() {
           <p className="text-white text-xs md:text-sm tracking-[0.3em] uppercase mb-2">Event</p>
           <h2 className="text-white text-4xl md:text-6xl font-medium mb-4">EXHIBITIONS</h2>
           <p className="text-white/80 text-sm md:text-base max-w-xl font-light leading-relaxed mb-10">
-            Exhibitions venue with Presence, Prestige and Purpose Take a look inside Scroll for more A central London.
+           Experience our exhibitions, defined by presence, prestige, and purpose, set in the heart of Kerala.
           </p>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">

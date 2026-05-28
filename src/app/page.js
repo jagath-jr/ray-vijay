@@ -31,19 +31,19 @@ export default function Home() {
   // Data for the Spaces section
   const spacesData = [
     {
-      title: "RAY ROYAL",
+      title: "RAY SIGNATURE",
       description:
         "Luxury banquet space designed for grand weddings, receptions, and premium celebrations. Featuring elegant interiors and a sophisticated ambiance for unforgettable events.",
       image: "/spaces-features-section-img-1.jpg",
     },
     {
-      title: "RAY MAJESTIC",
+      title: "RAY BANQUET",
       description:
         "Elegant event hall crafted for receptions, corporate gatherings, and social celebrations. Blending luxury interiors with spacious comfort for memorable guest experiences.",
       image: "/spaces-features-section-img-2.jpg",
     },
     {
-      title: "RAY PRIVE",
+      title: "RAY HERITAGE",
       description:
         "Modern conference and private event space designed for business meetings and exclusive gatherings. Offering a refined atmosphere with comfort, privacy, and professional elegance.",
       image: "/spaces-features-section-img-3.jpg",
