@@ -125,20 +125,6 @@ const venuesData = [
     ]
   },
   {
-    id: "ray-heritage",
-    title: "Ray Heritage",
-    subtitle: "Mini Hall | Capacity: 600+ Guests",
-    description: "Ray Heritage blends sophistication with warmth, creating the perfect setting for intimate weddings, family celebrations, engagement ceremonies, and private events. Its timeless design and versatile layout make every gathering feel elegant and personal.",
-    boxTitle: "600+ Guests",
-    boxSubtitle: "Ideal For:",
-    list: ["Engagement Ceremonies", "Birthday Celebrations", "Cultural Events", "Private Gatherings"],
-    images: [
-      "https://picsum.photos/id/1060/1200/800", // Guaranteed working coffee/interior shot
-      "https://picsum.photos/id/163/1200/800",  // Guaranteed working architecture shot
-      "https://picsum.photos/id/249/1200/800"   // Guaranteed working bridge/lights shot
-    ]
-  },
-  {
     id: "ray-banquet",
     title: "Ray Banquet",
     subtitle: "Banquet Hall | Capacity: 1200+ Guests",
@@ -154,17 +140,17 @@ const venuesData = [
     ]
   },
   {
-    id: "ray-gateway",
-    title: "Ray Gateway",
-    subtitle: "Luxury Lobby | 15,000 Sq. Ft.",
-    description: "An impressive arrival experience sets the tone for your event. Ray Gateway is a grand lobby designed to welcome guests with unparalleled luxury and breathtaking architecture.",
+    id: "ray-heritage",
+    title: "Ray Heritage",
+    subtitle: "Mini Hall | Capacity: 600+ Guests",
+    description: "Ray Heritage blends sophistication with warmth, creating the perfect setting for intimate weddings, family celebrations, engagement ceremonies, and private events. Its timeless design and versatile layout make every gathering feel elegant and personal.",
     boxTitle: "600+ Guests",
-    boxSubtitle: "Highlights:",
-    list: ["Premium Guest Arrival Experience", "Spacious Gathering Area", "Perfect for Welcome Setups & Exhibitions", "Luxury Ambience"],
+    boxSubtitle: "Ideal For:",
+    list: ["Engagement Ceremonies", "Birthday Celebrations", "Cultural Events", "Private Gatherings"],
     images: [
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80",
-     "https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80"
+      "https://picsum.photos/id/1060/1200/800", // Guaranteed working coffee/interior shot
+      "https://picsum.photos/id/163/1200/800",  // Guaranteed working architecture shot
+      "https://picsum.photos/id/249/1200/800"   // Guaranteed working bridge/lights shot
     ]
   },
   {
@@ -195,6 +181,23 @@ const venuesData = [
       "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=80"  // High rise view
     ]
   },
+  
+  {
+    id: "ray-gateway",
+    title: "Ray Gateway",
+    subtitle: "Luxury Lobby | 15,000 Sq. Ft.",
+    description: "An impressive arrival experience sets the tone for your event. Ray Gateway is a grand lobby designed to welcome guests with unparalleled luxury and breathtaking architecture.",
+    boxTitle: "600+ Guests",
+    boxSubtitle: "Highlights:",
+    list: ["Premium Guest Arrival Experience", "Spacious Gathering Area", "Perfect for Welcome Setups & Exhibitions", "Luxury Ambience"],
+    images: [
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80",
+     "https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  
+  
   {
     id: "ray-royal-suites",
     title: "Ray Royal Suites",

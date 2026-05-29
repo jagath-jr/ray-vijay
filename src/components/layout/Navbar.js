@@ -62,11 +62,11 @@ export default function Navbar() {
       hasDropdown: true,
       subLinks: [
         { name: "Ray Signature", href: "/venue-hall#ray-signature" },
-        { name: "Ray Heritage", href: "/venue-hall#ray-heritage" },
         { name: "Ray Banquet", href: "/venue-hall#ray-banquet" },
-        { name: "Ray Gateway", href: "/venue-hall#ray-gateway" },
+        { name: "Ray Heritage", href: "/venue-hall#ray-heritage" },
         { name: "Ray Privé", href: "/venue-hall#ray-prive" },
         { name: "Ray Skywalk", href: "/venue-hall#ray-skywalk" },
+        { name: "Ray Gateway", href: "/venue-hall#ray-gateway" },
         { name: "Ray Royal Suites", href: "/venue-hall#ray-royal-suites" },
         { name: "Ray Atrium", href: "/venue-hall#ray-atrium" }
       ]
