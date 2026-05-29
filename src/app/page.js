@@ -221,20 +221,20 @@ export default function Home() {
   return (
     <main ref={mainRef} className="bg-white min-h-screen overflow-hidden">
       {/* ================= HERO SECTION ================= */}
-      <section
-        className="relative w-full h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/home-page-hero-secion-img.png')" }}
-      >
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative z-10 px-4 md:px-8 text-center w-full max-w-6xl mx-auto">
-          <h1
-            ref={heroTextRef}
-            className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-normal tracking-wide uppercase leading-snug md:leading-tight"
-          >
-            An iconic venue in the heart <br className="hidden md:block" /> of Covent Garden.
-          </h1>
-        </div>
-      </section>
+     <section
+  className="relative w-full h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/home-page-hero-secion-img.png')" }}
+>
+  <div className="absolute inset-0 bg-[#800000]/27 backdrop-blur-[3px]"></div>
+  <div className="relative z-10 px-4 md:px-8 text-center w-full max-w-6xl mx-auto">
+    <h1
+      ref={heroTextRef}
+      className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-normal tracking-wide uppercase leading-snug md:leading-tight"
+    >
+      An iconic venue in the heart <br className="hidden md:block" /> of Covent Garden.
+    </h1>
+  </div>
+</section>
 
       {/* ================= WELCOME SECTION ================= */}
       <section ref={welcomeSectionRef} className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto text-[#6A2834]">

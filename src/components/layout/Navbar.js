@@ -109,7 +109,7 @@ export default function Navbar() {
             <div key={index} className="relative group">
               <Link 
                 href={link.href}
-                className={`text-base font-serif flex items-center gap-1 transition-colors duration-300 py-2 ${
+                className={`text-base font-Garamond flex items-center gap-1 transition-colors duration-300 py-2 ${
                   isActive 
                     ? "text-[#c99f36] border-b border-[#c99f36]" 
                     : isHome && !hasScrolled

@@ -133,9 +133,9 @@ const venuesData = [
     boxSubtitle: "Ideal For:",
     list: ["Wedding Receptions", "Corporate Conferences", "Social Gatherings", "Premium Banquets"],
     images: [
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80", // Elegant banquet table
+      "/ray-banquet-img1.jpg", // Elegant banquet table
       "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=80", // Premium catering setup
-      "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80"  // Event atmosphere
+      "/ray-banquet-img2.jpg"  // Event atmosphere
     
     ]
   },
@@ -176,9 +176,9 @@ const venuesData = [
     boxSubtitle: "Ideal For:",
     list: ["Rooftop Parties", "Cocktail Nights", "Sangeet Events", "Social Celebrations"],
     images: [
-      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=80", // Classic Chicago city view
-      "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1200&q=80", // Evening city lights
-      "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=80"  // High rise view
+      "ray-skywalk-img2.jpg", // Classic Chicago city view
+      "ray-skywalk-img3.jpg", // Evening city lights
+      "ray-skywalk-img1.jpg"  // High rise view
     ]
   },
   
