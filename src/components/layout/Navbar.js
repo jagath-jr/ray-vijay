@@ -14,6 +14,9 @@ export default function Navbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
   
   const pathname = usePathname();
+  
+  // Check if we are on the Home page
+  const isHome = pathname === "/";
 
   // Scroll Event Listener
   useEffect(() => {
@@ -92,7 +95,7 @@ export default function Navbar() {
           <img 
             src="/Logo.png" 
             alt="Ray Vijay Centre For Conventions" 
-            className="h-14 md:h-20 object-contain"
+            className="h-14 md:h-25 object-contain"
           />
         </Link>
       </div>
@@ -109,7 +112,9 @@ export default function Navbar() {
                 className={`text-base font-serif flex items-center gap-1 transition-colors duration-300 py-2 ${
                   isActive 
                     ? "text-[#c99f36] border-b border-[#c99f36]" 
-                    : "text-gray-900 hover:text-[#c99f36]"
+                    : isHome && !hasScrolled
+                      ? "text-white hover:text-[#c99f36]"
+                      : "text-gray-900 hover:text-[#c99f36]"
                 }`}
               >
                 {link.name}
