@@ -278,13 +278,13 @@ const VenueSection = ({ data, isFirst }) => {
       
       {/* HEADER / INTRO */}
       <section className="pb-12 md:pb-16 px-6 md:px-12 max-w-5xl mx-auto text-center">
-        <h2 className="intro-anim text-[#6A2834] text-5xl md:text-6xl lg:text-[72px] font-serif uppercase tracking-widest mb-4">
+        <h2 className="intro-anim text-[#6C031D] text-5xl md:text-6xl lg:text-[72px] font-serif uppercase tracking-widest mb-4">
           {data.title}
         </h2>
-        <p className="intro-anim text-[#6A2834] text-lg md:text-2xl lg:text-3xl font-serif mb-8">
+        <p className="intro-anim text-[#6C031D] text-lg md:text-2xl lg:text-3xl font-serif mb-8">
           {data.subtitle}
         </p>
-        <p className="intro-anim text-[#6A2834]/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-4xl mx-auto font-light">
+        <p className="intro-anim text-[#6C031D]/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-4xl mx-auto font-light">
           {data.description}
         </p>
       </section>
@@ -327,7 +327,7 @@ const VenueSection = ({ data, isFirst }) => {
   </div>
 </div>
           {/* Right Column: Maroon Info Box */}
-          <div className="split-anim bg-[#6A2834] p-6 md:p-10 relative flex flex-col justify-center text-white min-h-[400px] lg:min-h-[500px]">
+          <div className="split-anim bg-[#6C031D] p-6 md:p-10 relative flex flex-col justify-center text-white min-h-[400px] lg:min-h-[500px]">
             <div className="absolute inset-4 md:inset-6 border border-white/60 pointer-events-none"></div>
             <div className="relative z-10 px-4 md:px-8 py-8 flex flex-col h-full">
               <div className="mb-auto">
