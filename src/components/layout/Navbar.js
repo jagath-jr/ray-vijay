@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import gsap from "gsap";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,8 +16,75 @@ export default function Navbar() {
   
   const pathname = usePathname();
   
-  // Check if we are on the Home page
+  // Refs for animation and outside-click detection
+  const navRef = useRef(null);
+  const drawerRef = useRef(null);
+  const hamburgerRef = useRef(null);
+  
   const isHome = pathname === "/";
+
+  // --- NEW: Handle Click/Touch Outside to Close Menu ---
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Close menu if it's open AND the touch/click is outside both the drawer and the hamburger button
+      if (
+        isMobileMenuOpen && 
+        drawerRef.current && !drawerRef.current.contains(event.target) &&
+        hamburgerRef.current && !hamburgerRef.current.contains(event.target)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    // Listen for standard clicks and mobile screen touches
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside, { passive: true });
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
+
+  // 1. GSAP Initial Load Animation (Desktop & Top Bar)
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".animate-nav-item",
+        { y: -20, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          stagger: 0.1, 
+          ease: "power3.out",
+          delay: 0.1 
+        }
+      );
+    }, navRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // 2. GSAP Mobile Menu Drawer Animation
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      if (isMobileMenuOpen) {
+        gsap.to(".mobile-nav-item", {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: "power3.out",
+          delay: 0.2 
+        });
+      } else {
+        gsap.set(".mobile-nav-item", { y: 20, opacity: 0 });
+      }
+    }, navRef);
+
+    return () => ctx.revert();
+  }, [isMobileMenuOpen]);
 
   // Scroll Event Listener
   useEffect(() => {
@@ -30,9 +98,9 @@ export default function Navbar() {
       }
 
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false); // Scrolling down
+        setIsVisible(false);
       } else {
-        setIsVisible(true);  // Scrolling up
+        setIsVisible(true); 
       }
 
       setLastScrollY(currentScrollY);
@@ -52,7 +120,6 @@ export default function Navbar() {
     return () => { document.body.style.overflow = "unset"; };
   }, [isMobileMenuOpen]);
 
-  // UPDATED: Activated subLinks with your 8 new venues
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
@@ -82,6 +149,7 @@ export default function Navbar() {
 
   return (
     <nav 
+      ref={navRef}
       className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between pr-4 md:pr-8 lg:pr-12 transition-all duration-300 ease-in-out ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       } ${
@@ -90,7 +158,7 @@ export default function Navbar() {
     >
       
       {/* ================= LOGO AREA ================= */}
-      <div className="px-4 md:px-8 py-3 md:py-4 min-w-[120px] md:min-w-[180px] flex justify-center items-center relative z-50 bg-transparent">
+      <div className="px-4 md:px-8 py-3 md:py-4 min-w-[120px] md:min-w-[180px] flex justify-center items-center relative z-50 bg-transparent animate-nav-item opacity-0">
         <Link href="/">
           <img 
             src="/Logo.png" 
@@ -106,7 +174,7 @@ export default function Navbar() {
           const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
 
           return (
-            <div key={index} className="relative group">
+            <div key={index} className="relative group animate-nav-item opacity-0">
               <Link 
                 href={link.href}
                 className={`text-base font-Garamond flex items-center gap-1 transition-colors duration-300 py-2 ${
@@ -145,15 +213,16 @@ export default function Navbar() {
       </div>
 
       {/* ================= DESKTOP CTA BUTTON ================= */}
-      <div className="hidden lg:block relative z-50">
+      <div className="hidden lg:block relative z-50 animate-nav-item opacity-0">
         <button className="bg-[#cba328] hover:bg-[#b38e21] text-white text-sm font-medium px-6 py-3 rounded-md transition-colors duration-300 shadow-md">
           Book Your Event
         </button>
       </div>
 
       {/* ================= MOBILE HAMBURGER BUTTON ================= */}
-      <div className="lg:hidden flex items-center relative z-50">
+      <div className="lg:hidden flex items-center relative z-50 animate-nav-item opacity-0">
         <button 
+          ref={hamburgerRef} // Attached ref here
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="text-gray-900 focus:outline-none p-2 bg-white/70 rounded-md backdrop-blur-md shadow-sm"
           aria-label="Toggle menu"
@@ -176,9 +245,11 @@ export default function Navbar() {
           isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={() => setIsMobileMenuOpen(false)}
+        onTouchStart={() => setIsMobileMenuOpen(false)} // Added touch fallback to the overlay itself
       ></div>
 
       <div 
+        ref={drawerRef} // Attached ref here
         className={`fixed top-0 right-0 h-[100dvh] w-[85%] max-w-[350px] bg-white z-40 shadow-2xl transition-transform duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] lg:hidden overflow-y-auto ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -191,7 +262,7 @@ export default function Navbar() {
               const isDropdownOpen = activeDropdown === link.name;
 
               return (
-                <div key={index} className="flex flex-col border-b border-gray-100 last:border-none">
+                <div key={index} className="flex flex-col border-b border-gray-100 last:border-none mobile-nav-item opacity-0">
                   
                   <div className="flex items-center justify-between">
                     <Link 
@@ -250,7 +321,7 @@ export default function Navbar() {
             })}
           </div>
           
-          <div className="mt-8 pt-6 border-t border-gray-100">
+          <div className="mt-8 pt-6 border-t border-gray-100 mobile-nav-item opacity-0">
             <button className="bg-[#cba328] w-full text-white text-lg font-medium px-6 py-4 rounded-md shadow-md active:scale-[0.98] transition-transform">
               Book Your Event
             </button>

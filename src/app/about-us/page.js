@@ -14,7 +14,7 @@ export default function AboutUs() {
 
   // Array of 3 Exhibition Images
   const exhibitionImages = [
-    "/path-to-exhibition-image.png", 
+    "/path-to-exhibition-image.webp", 
     "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop", // Corporate exhibition/stage
    "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2069&auto=format&fit=crop", // Luxury dining halls
   ];
@@ -140,9 +140,9 @@ export default function AboutUs() {
             <p className="text-[#6C031D] text-sm md:text-base font-bold mb-2">
             Ray Vijay Centre for Convention was created with a vision to redefine celebrations through elegance, luxury, and unforgettable experiences. Designed as a destination for weddings, corporate gatherings, and cultural events, the convention centre blends sophisticated spaces with exceptional hospitality. Every corner of Ray Vijay Centre reflects our commitment to creating memorable moments where people come together to celebrate life’s most special occasions.</p>
           </div>
-          <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1 md:order-2">
+          <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1 md:order-2 rounded-2xl">
             <img 
-              src="/about-us-img1.png" 
+              src="/about-us-img1.webp" 
               alt="Our Story Celebration" 
               className="w-full h-full object-cover"
             />
@@ -151,9 +151,9 @@ export default function AboutUs() {
 
         {/* Row 2: Our Vision */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1">
+          <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1 rounded-2xl">
             <img 
-              src="/about-us-img2.png" 
+              src="/about-us-img2.webp" 
               alt="Our Vision Banquet" 
               className="w-full h-full object-cover"
             />
@@ -191,7 +191,7 @@ export default function AboutUs() {
           <p className="text-white text-xs md:text-sm tracking-[0.3em] uppercase mb-2">Event</p>
           <h2 className="text-white text-4xl md:text-6xl font-medium mb-4">EXHIBITIONS</h2>
           <p className="text-white/80 text-sm md:text-base max-w-xl font-light leading-relaxed mb-10">
-           Experience our exhibitions, defined by presence, prestige, and purpose, set in the heart of Kerala.
+           Experience our exhibitions, defined by presence, prestige, and purpose, set in the heart of Trivandrum.
           </p>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">

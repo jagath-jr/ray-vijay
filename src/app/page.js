@@ -34,19 +34,19 @@ export default function Home() {
       title: "RAY SIGNATURE",
       description:
         "Luxury banquet space designed for grand weddings, receptions, and premium celebrations. Featuring elegant interiors and a sophisticated ambiance for unforgettable events.",
-      image: "/spaces-features-section-img-1.jpg",
+      image: "/spaces-features-section-img-1.webp",
     },
     {
       title: "RAY BANQUET",
       description:
         "Elegant event hall crafted for receptions, corporate gatherings, and social celebrations. Blending luxury interiors with spacious comfort for memorable guest experiences.",
-      image: "/spaces-features-section-img-2.jpg",
+      image: "/spaces-features-section-img-2.webp",
     },
     {
       title: "RAY HERITAGE",
       description:
         "Modern conference and private event space designed for business meetings and exclusive gatherings. Offering a refined atmosphere with comfort, privacy, and professional elegance.",
-      image: "/spaces-features-section-img-3.jpg",
+      image: "/spaces-features-section-img-3.webp",
     },
   ];
 
@@ -225,13 +225,13 @@ export default function Home() {
   className="relative w-full h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
   style={{ backgroundImage: "url('/home-page-hero-secion-img.png')" }}
 >
-  <div className="absolute inset-0 bg-[#800000]/27 backdrop-blur-[3px]"></div>
+  <div className="absolute inset-0 bg-[#800000]/27 backdrop-blur-[2px]"></div>
   <div className="relative z-10 px-4 md:px-8 text-center w-full max-w-6xl mx-auto">
     <h1
       ref={heroTextRef}
       className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-normal tracking-wide uppercase leading-snug md:leading-tight"
     >
-      An iconic venue in the heart <br className="hidden md:block" /> of Covent Garden.
+      A Landmark Destination in the <br className="hidden md:block" /> Royal Heart of Kerala.
     </h1>
   </div>
 </section>

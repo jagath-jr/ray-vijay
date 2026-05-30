@@ -148,9 +148,9 @@ const venuesData = [
     boxSubtitle: "Ideal For:",
     list: ["Engagement Ceremonies", "Birthday Celebrations", "Cultural Events", "Private Gatherings"],
     images: [
-      "https://picsum.photos/id/1060/1200/800", // Guaranteed working coffee/interior shot
-      "https://picsum.photos/id/163/1200/800",  // Guaranteed working architecture shot
-      "https://picsum.photos/id/249/1200/800"   // Guaranteed working bridge/lights shot
+      "ray-heritage-img1.jpg", // Guaranteed working coffee/interior shot
+      "ray-heritage-img2.jpg",  // Guaranteed working architecture shot
+      "ray-heritage-img3.jpg"   // Guaranteed working bridge/lights shot
     ]
   },
   {
@@ -191,9 +191,9 @@ const venuesData = [
     boxSubtitle: "Highlights:",
     list: ["Premium Guest Arrival Experience", "Spacious Gathering Area", "Perfect for Welcome Setups & Exhibitions", "Luxury Ambience"],
     images: [
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80",
-     "https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1200&q=80"
+      "ray-gateway-img1.png",
+      "ray-gateway-img3.png",
+      "ray-gateway-img2.png"
     ]
   },
   
@@ -208,7 +208,7 @@ const venuesData = [
     list: ["Elegant Interiors", "Premium Comfort", "VIP Hospitality", "Luxury Stay Experience"],
     images: [
       "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80",
+      "ray-royalsutes-img1.jpg",
       "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80"
     ]
   },
@@ -221,9 +221,9 @@ const venuesData = [
     boxSubtitle: "Ideal For:",
     list: ["Open-Air Functions", "Cultural Events", "Wedding Ceremonies", "Community Gatherings"],
     images: [
-      "https://picsum.photos/id/319/1200/800", // Permanent image - architecture/glass
-      "https://picsum.photos/id/338/1200/800", // Permanent image - open space
-      "https://picsum.photos/id/416/1200/800"  // Permanent image - structure/nature
+      "ray-atrium-img1.png", // Permanent image - architecture/glass
+      "ray-atrium-img2.png", // Permanent image - open space
+      "ray-atrium-img3.png"  // Permanent image - structure/nature
     ]
   }
 ];
@@ -294,34 +294,38 @@ const VenueSection = ({ data, isFirst }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           
           {/* Left Column: Image Slider */}
-          <div className="split-anim relative w-full aspect-square lg:aspect-auto bg-gray-200 group overflow-hidden">
-            {data.images.map((src, index) => (
-              <img 
-                key={index}
-                src={src} 
-                alt={`${data.title} Image ${index + 1}`} 
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
-                  index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-                }`}
-              />
-            ))}
-            <div className="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/0 z-20 pointer-events-none"></div>
-            
-            {/* Dots Pagination */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
-              {data.images.map((_, i) => (
-                <button 
-                  key={i} 
-                  onClick={() => setCurrentSlide(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                  className={`w-2.5 h-2.5 rounded-full border border-white transition-colors duration-300 ${
-                    i === currentSlide ? 'bg-white' : 'bg-transparent hover:bg-white/50'
-                  }`}
-                ></button>
-              ))}
-            </div>
-          </div>
+<div className="split-anim relative w-full aspect-square lg:aspect-auto bg-gray-200 group overflow-hidden">
+  {data.images.map((src, index) => (
+    <img 
+      key={index}
+      src={src} 
+      alt={`${data.title} Image ${index + 1}`} 
+      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+        index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+      }`}
+    />
+  ))}
+  <div className="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/0 z-20 pointer-events-none"></div>
+  
+  {/* 👇 TEMPORARY BLUR LAYER 👇 */}
+  {/* DELETE THIS DIV when the client provides the final images */}
+  <div className="absolute inset-0 backdrop-blur-[3px] bg-white/20 z-20 pointer-events-none"></div>
+  {/* 👆 ======================= 👆 */}
 
+  {/* Dots Pagination */}
+  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+    {data.images.map((_, i) => (
+      <button 
+        key={i} 
+        onClick={() => setCurrentSlide(i)}
+        aria-label={`Go to slide ${i + 1}`}
+        className={`w-2.5 h-2.5 rounded-full border border-white transition-colors duration-300 ${
+          i === currentSlide ? 'bg-white' : 'bg-transparent hover:bg-white/50'
+        }`}
+      ></button>
+    ))}
+  </div>
+</div>
           {/* Right Column: Maroon Info Box */}
           <div className="split-anim bg-[#6A2834] p-6 md:p-10 relative flex flex-col justify-center text-white min-h-[400px] lg:min-h-[500px]">
             <div className="absolute inset-4 md:inset-6 border border-white/60 pointer-events-none"></div>

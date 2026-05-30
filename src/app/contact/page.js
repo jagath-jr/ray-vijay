@@ -236,9 +236,14 @@ export default function Contact() {
                   Thiruvananthapuram, Kerala<br/>
                   India - 695001
                 </p>
-                <button className="w-full bg-[#cba328] hover:bg-[#b38e21] text-white font-medium font-['Inter'] py-3 rounded-md transition-colors shadow-md">
-                  Get Directions
-                </button>
+                <a 
+  href="https://maps.app.goo.gl/QLiwgTu8AYLbJMqd6" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="w-full block text-center bg-[#cba328] hover:bg-[#b38e21] text-white font-medium font-['Inter'] py-3 rounded-md transition-colors shadow-md"
+>
+  Get Directions
+</a>
               </div>
 
             </div>
