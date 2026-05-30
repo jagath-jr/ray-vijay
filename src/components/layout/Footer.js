@@ -83,7 +83,7 @@ export default function Footer() {
           <div className="footer-col flex flex-col items-center sm:items-start text-center sm:text-left">
             <h3 className="text-white text-lg font-inter font-bold mb-6">Quick Links</h3>
             <ul className="flex flex-col items-center font-inter sm:items-start gap-4">
-              {["Home", "About Us", "Venue/Hall", "Gallery", "Contact"].map((item, index) => (
+              {["Home", "About Us", "Venue/Hall", "Contact"].map((item, index) => (
                 <li key={index}>
                   <Link
                     href={`/${item === "Home" ? "" : item.toLowerCase().replace(/[\s/]+/g, "-")}`}

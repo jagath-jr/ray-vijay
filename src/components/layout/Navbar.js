@@ -138,7 +138,7 @@ export default function Navbar() {
         { name: "Ray Atrium", href: "/venue-hall#ray-atrium" }
       ]
     },
-    { name: "Gallery", href: "/gallery" },
+    // { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ];
 
