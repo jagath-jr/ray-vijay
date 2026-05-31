@@ -80,7 +80,7 @@ const venuesData = [
     boxTitle: "750+ Guests",
     boxSubtitle: "Ideal For:",
     list: ["Rooftop Parties", "Cocktail Nights", "Sangeet Events", "Social Celebrations"],
-    hasAC: true,
+    hasAC: false,
     images: [
       "ray-skywalk-img2.jpg", 
       "ray-skywalk-img3.jpg", 
