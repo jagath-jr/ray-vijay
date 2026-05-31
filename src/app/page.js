@@ -111,7 +111,7 @@ export default function Home() {
       
       // 1. Hero Parallax Animation
       gsap.to(heroBgRef.current, {
-        yPercent: 80, // Slightly reduced for smoother mobile experience
+        yPercent: 20, // Slightly reduced for smoother mobile experience
         ease: "none",
         scrollTrigger: {
           trigger: heroSectionRef.current,
