@@ -1,27 +1,61 @@
+// 1. Add Poppins to the import
+import { Cormorant_Garamond, Inter, Poppins } from 'next/font/google'; 
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
-// 1. Import the Footer component
 import Footer from '@/components/layout/Footer';
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+// 2. Configure Poppins
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'], // Add the weights you need
+  variable: '--font-poppins',
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Ray Vijay Centre For Conventions',
-  description: 'convention centre in Kerala, India. We offer state-of-the-art facilities and exceptional service for all your event needs.',
+  description: 'Convention centre in Kerala, India. We offer state-of-the-art facilities and exceptional service for all your event needs.',
+  openGraph: {
+    title: 'Ray Vijay Centre For Conventions',
+    description: 'Convention centre in Kerala, India.',
+    url: '',
+    siteName: 'Ray Vijay Centre',
+    images: [
+      {
+        url: '/Logo.png', // Or ideally, a larger feature image
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
 };
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-white text-black min-h-screen flex flex-col">
+    // 3. Add poppins.variable to the class string
+    <html lang="en" suppressHydrationWarning className={`${cormorant.variable} ${inter.variable} ${poppins.variable}`}>
+      <body className="font-cormorant antialiased bg-white text-black min-h-screen flex flex-col">
         <Navbar />
         
-        {/* Main Content Wrapper - Flex grow ensures footer is pushed to bottom if page content is short */}
         <main className="flex-grow">
           {children}
         </main>
         
-        {/* 2. Place Footer here so it renders on every page */}
         <Footer />
-        
       </body>
     </html>
   );

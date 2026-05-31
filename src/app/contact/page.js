@@ -152,10 +152,10 @@ export default function Contact() {
       
       {/* ================= HEADER ================= */}
       <section className="contact-header pt-32 md:pt-48 pb-10 md:pb-16 px-6 text-center">
-        <h1 className="text-5xl md:text-7xl lg:text-[80px] font-serif text-[#6A2834] mb-4 md:mb-6">
+        <h1 className="text-5xl md:text-7xl lg:text-[80px] font-serif text-[#6C031D] mb-4 md:mb-6">
           Get In Touch
         </h1>
-        <p className="text-[#6A2834]/80 text-lg md:text-2xl font-serif tracking-wide">
+        <p className="text-[#6C031D]/80 text-lg md:text-2xl font-serif tracking-wide">
           Let us help you create an unforgettable celebration
         </p>
       </section>
@@ -165,17 +165,16 @@ export default function Contact() {
         
         {/* ================= TOP INFO CARDS ================= */}
         <section className="top-cards-section px-6 md:px-12 max-w-[1400px] mx-auto mb-16 md:mb-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             
             {/* Call Us */}
             <div className="info-card bg-white p-8 md:p-10 rounded-xl shadow-sm text-center flex flex-col items-center">
               <div className="w-12 h-12 rounded-full bg-[#fdfaf6] flex items-center justify-center text-[#cba328] mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.25-3.95-6.847-6.847l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Call Us</h3>
-              <p className="text-gray-600 text-sm mb-1">+91 471 XXX XXXX</p>
-              <p className="text-gray-600 text-sm mb-4">+91 471 YYY YYYY</p>
-              <p className="text-gray-400 text-xs">Mon - Sun: 9:00 AM - 9:00 PM</p>
+              <h3 className="text-xl font-bold font-['Georgia'] text-gray-900 mb-4">Call Us</h3>
+              <p className="text-gray-600 font-['Inter'] text-sm mb-1">+91 471 2 555 555</p>
+              <p className="text-gray-400 font-['Inter'] text-xs">Mon - Sun: 9:00 AM - 9:00 PM</p>
             </div>
 
             {/* Email Us */}
@@ -183,10 +182,12 @@ export default function Contact() {
               <div className="w-12 h-12 rounded-full bg-[#fdfaf6] flex items-center justify-center text-[#cba328] mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Email Us</h3>
-              <p className="text-gray-600 text-sm mb-1">info@rayvijaycenter.com</p>
-              <p className="text-gray-600 text-sm mb-4">events@rayvijaycenter.com</p>
-              <p className="text-gray-400 text-xs">We&apos;ll respond within 24 hours</p>
+              <h3 className="text-xl font-bold font-['Georgia'] text-gray-900 mb-4">Email Us</h3>
+              <p className="text-gray-600 font-['Inter'] text-sm mb-1">
+  <a href="mailto:rayvijaycentre@gmail.com" className="hover:text-[#cba328] transition-colors">rayvijaycentre@gmail.com</a>
+</p>
+              {/* <p className="text-gray-600 font-['Inter'] text-sm mb-4">events@rayvijaycenter.com</p> */}
+              <p className="text-gray-400 font-['Inter'] text-xs">We&apos;ll respond within 24 hours</p>
             </div>
 
             {/* Visit Us */}
@@ -194,22 +195,13 @@ export default function Contact() {
               <div className="w-12 h-12 rounded-full bg-[#fdfaf6] flex items-center justify-center text-[#cba328] mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Visit Us</h3>
-              <p className="text-gray-600 text-sm mb-1">Ray Vijay Centre</p>
-              <p className="text-gray-600 text-sm mb-4">Thiruvananthapuram, Kerala</p>
-              <p className="text-gray-400 text-xs">India - 695001</p>
+              <h3 className="text-xl font-bold font-['Georgia'] text-gray-900 mb-4">Visit Us</h3>
+              <p className="text-gray-600 font-['Inter'] text-sm mb-1">Ray Vijay Centre for Conventions</p>
+              <p className="text-gray-600 font-['Inter'] text-sm mb-4">Thiruvananthapuram, Kerala</p>
+              <p className="text-gray-400 font-['Inter'] text-xs">India - 695001</p>
             </div>
 
             {/* Working Hours */}
-            <div className="info-card bg-white p-8 md:p-10 rounded-xl shadow-sm text-center flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-[#fdfaf6] flex items-center justify-center text-[#cba328] mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Working Hours</h3>
-              <p className="text-gray-600 text-sm mb-1">Monday - Sunday</p>
-              <p className="text-gray-600 text-sm mb-4">9:00 AM - 9:00 PM</p>
-              <p className="text-gray-400 text-xs">Open all days</p>
-            </div>
 
           </div>
         </section>
@@ -221,66 +213,54 @@ export default function Contact() {
             {/* LEFT SIDEBAR */}
             <div className="w-full lg:w-1/3 flex flex-col gap-8">
               
-              {/* Find Us Card */}
+             
+
+               {/* Working Hours */}
+            <div className="sidebar-card bg-white p-8 md:p-10 rounded-xl shadow-sm text-center flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-[#fdfaf6] flex items-center justify-center text-[#cba328] mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <h3 className="text-xl font-bold font-['Georgia'] text-gray-900 mb-4">Working Hours</h3>
+              <p className="text-gray-600 font-['Inter'] text-sm mb-1">Monday - Sunday</p>
+              <p className="text-gray-600 font-['Inter'] text-sm mb-4">9:00 AM - 9:00 PM</p>
+              <p className="text-gray-400 font-['Inter'] text-xs">Open all days</p>
+            </div>
+             {/* Find Us Card */}
               <div className="sidebar-card bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <h3 className="text-2xl font-bold font-['Georgia'] text-gray-900 mb-6 flex items-center gap-3">
                   <span className="text-[#cba328]">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path fillRule="evenodd" d="M3.464 7.61a.75.75 0 011.06 0l5.25 5.25a.75.75 0 01-1.06 1.06l-4.72-4.72v9.05a.75.75 0 01-1.5 0V9.2l-4.72 4.72a.75.75 0 01-1.06-1.06l5.25-5.25zm16.5-4.5a.75.75 0 00-1.06 0L13.654 8.36a.75.75 0 001.06 1.06l4.72-4.72v10.55a.75.75 0 001.5 0V4.7l4.72 4.72a.75.75 0 001.06-1.06l-5.25-5.25z" clipRule="evenodd" /></svg>
                   </span>
                   Find Us
                 </h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                <p className="text-gray-600 font-['Inter'] mb-8 leading-relaxed">
                   Ray Vijay Centre for Conventions<br/>
                   Thiruvananthapuram, Kerala<br/>
                   India - 695001
                 </p>
-                <button className="w-full bg-[#cba328] hover:bg-[#b38e21] text-white font-medium py-3 rounded-md transition-colors shadow-md">
-                  Get Directions
-                </button>
-              </div>
-
-              {/* Quick Information Card */}
-              <div className="sidebar-card bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <span className="text-[#cba328]">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 011.08.853l-2.016 8.064c-.31 1.243-1.601 2.279-2.747 1.706l-4.437-2.218a.75.75 0 01.67-1.342l4.437 2.218c.382.19.81-.137.708-.55l-2.015-8.064a.75.75 0 011.08-.853l.042-.02-.71-2.836c-.102-.413.326-.74.708-.55l4.437 2.218a.75.75 0 11-.67 1.342l-4.437-2.218zM12 6.75a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" clipRule="evenodd" /></svg>
-                  </span>
-                  Quick Information
-                </h3>
-                
-                <div className="flex flex-col gap-5">
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1 uppercase tracking-wide">Venue Capacity</p>
-                    <p className="text-gray-800 font-medium">50 - 2000 guests</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1 uppercase tracking-wide">Parking Spaces</p>
-                    <p className="text-gray-800 font-medium">500+ vehicles</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1 uppercase tracking-wide">Total Venues</p>
-                    <p className="text-gray-800 font-medium">6 premium spaces</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1 uppercase tracking-wide">Catering</p>
-                    <p className="text-gray-800 font-medium">In-house & external</p>
-                  </div>
-                </div>
+                <a 
+  href="https://maps.app.goo.gl/QLiwgTu8AYLbJMqd6" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="w-full block text-center bg-[#cba328] hover:bg-[#b38e21] text-white font-medium font-['Inter'] py-3 rounded-md transition-colors shadow-md"
+>
+  Get Directions
+</a>
               </div>
 
             </div>
 
             {/* RIGHT FORM AREA */}
-            <div className="form-container w-full lg:w-2/3 bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
-              <p className="text-[#cba328] text-sm font-bold uppercase tracking-widest mb-2">Send us a Message</p>
-              <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-4">Book Your Dream Event</h2>
-              <p className="text-gray-500 mb-8 font-light">Fill out the form below and our event specialists will get back to you shortly</p>
+            <div id="booking-form" className="form-container w-full lg:w-2/3 bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
+              <p className="text-[#cba328] font-['Inter'] text-sm font-bold uppercase tracking-widest mb-2">Send us a Message</p>
+              <h2 className="text-4xl md:text-5xl font-['Georgia']  text-gray-900 mb-4">Book Your Dream Event</h2>
+              <p className="text-gray-500 mb-8 font-['Inter']">Fill out the form below and our event specialists will get back to you shortly</p>
 
               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 {/* Full Name */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-gray-700">Full Name *</label>
+                  <label className="text-sm font-['Inter'] font-medium text-gray-700">Full Name *</label>
                   <input 
                     type="text" 
                     name="fullName"
@@ -294,7 +274,7 @@ export default function Contact() {
 
                 {/* Email Address */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-gray-700">Email Address *</label>
+                  <label className="text-sm font-['Inter'] font-medium text-gray-700">Email Address *</label>
                   <input 
                     type="email" 
                     name="email"
@@ -308,7 +288,7 @@ export default function Contact() {
 
                 {/* Phone Number */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-gray-700">Phone Number *</label>
+                  <label className="text-sm font-['Inter'] font-medium text-gray-700">Phone Number *</label>
                   <input 
                     type="tel" 
                     name="phone"
@@ -322,7 +302,7 @@ export default function Contact() {
 
                 {/* Event Type */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-gray-700">Event Type *</label>
+                  <label className="text-sm font-['Inter'] font-medium text-gray-700">Event Type *</label>
                   <select
                     name="eventType"
                     className="border border-gray-300 rounded-md p-3 focus:outline-none focus:border-[#cba328] focus:ring-1 focus:ring-[#cba328] w-full bg-white text-black"
@@ -340,7 +320,7 @@ export default function Contact() {
 
                 {/* Event Date */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-gray-700">Event Date</label>
+                  <label className="text-sm font-['Inter'] font-medium  text-gray-700">Event Date</label>
                   <input 
                     type="date" 
                     name="eventDate"
@@ -352,7 +332,7 @@ export default function Contact() {
 
                 {/* Number of Guests */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-gray-700">Number of Guests</label>
+                  <label className="text-sm font-['Inter'] font-medium text-gray-700">Number of Guests</label>
                   <input 
                     type="number" 
                     name="guests"
@@ -365,7 +345,7 @@ export default function Contact() {
 
                 {/* Message Textarea */}
                 <div className="flex flex-col gap-2 md:col-span-2">
-                  <label className="text-sm font-medium text-gray-700">Message</label>
+                  <label className="text-sm font-['Inter'] font-medium text-gray-700">Message</label>
                   <textarea 
                     name="message"
                     rows="5"
@@ -381,7 +361,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#8b1820] hover:bg-[#6A2834] text-white font-bold py-4 rounded-md transition-colors shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full bg-[#8b1820] hover:bg-[#6A2834] text-white font-['Inter'] font-bold py-4 rounded-md transition-colors shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>

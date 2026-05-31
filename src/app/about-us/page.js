@@ -1,17 +1,53 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function AboutUs() {
   const mainRef = useRef(null);
   const ctaSectionRef = useRef(null);
+
+  // Exhibition Slider State
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Array of 3 Exhibition Images
+  const exhibitionImages = [
+    "/path-to-exhibition-image.webp", 
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop", // Corporate exhibition/stage
+   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2069&auto=format&fit=crop", // Luxury dining halls
+  ];
+
+  // Distinct out-states (hidden states) for each slide to create different animations
+  const outAnimations = [
+    "opacity-0 scale-110",        // Slide 1: Zooms out & fades in
+    "opacity-0 translate-x-16",   // Slide 2: Slides in from the right
+    "opacity-0 translate-y-12",   // Slide 3: Slides up from the bottom
+  ];
+
+  // The active state that all slides transition to when visible
+  const activeAnimation = "opacity-100 scale-100 translate-x-0 translate-y-0";
+
+  // Slider controls
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % exhibitionImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + exhibitionImages.length) % exhibitionImages.length);
+  };
+
+  // Auto-play functionality
+  useEffect(() => {
+    // Automatically change slide every 5000ms (5 seconds)
+    const slideTimer = setTimeout(() => {
+      nextSlide();
+    }, 5000);
+
+    // Cleanup timer on component unmount or if the user manually clicks next/prev
+    return () => clearTimeout(slideTimer);
+  }, [currentSlide]); // Dependency on currentSlide resets the timer if manually clicked
 
   // Array of partner logos for the sliding animation
   const partnerLogos = [
@@ -23,70 +59,44 @@ export default function AboutUs() {
   ];
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const ctx = gsap.context(() => {
       // 1. Header Animation
       gsap.from(".page-title", {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.2,
+        y: 30, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2,
       });
 
       // 2. Story & Vision Animations
       gsap.from(".story-block", {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out",
+        y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out",
         scrollTrigger: {
-          trigger: ".story-container",
-          start: "top 75%",
-          toggleActions: "play none none reverse",
+          trigger: ".story-container", start: "top 75%", toggleActions: "play none none reverse",
         },
       });
 
-      // 3. Partners Section (Fades in the title, text, and the sliding container)
+      // 3. Partners Section 
       gsap.from(".partners-fade-in", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
+        y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power2.out",
         scrollTrigger: {
-          trigger: ".partners-section",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
+          trigger: ".partners-section", start: "top 80%", toggleActions: "play none none reverse",
         },
       });
 
       // 4. Exhibitions Banner
       gsap.from(".exhibition-content > *", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
+        y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power2.out",
         scrollTrigger: {
-          trigger: ".exhibitions-section",
-          start: "top 70%",
-          toggleActions: "play none none reverse",
+          trigger: ".exhibitions-section", start: "top 70%", toggleActions: "play none none reverse",
         },
       });
 
       // 5. CTA Section Animation
       if (ctaSectionRef.current) {
         gsap.from(ctaSectionRef.current, {
-          scale: 0.95,
-          y: 30,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
+          scale: 0.95, y: 30, opacity: 0, duration: 0.8, ease: "power2.out",
           scrollTrigger: {
-            trigger: ctaSectionRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
+            trigger: ctaSectionRef.current, start: "top 85%", toggleActions: "play none none reverse",
           },
         });
       }
@@ -98,16 +108,13 @@ export default function AboutUs() {
   return (
     <main ref={mainRef} className="bg-white min-h-screen overflow-hidden">
       
-      {/* Inline Styles for the Infinite Marquee Animation */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes marquee {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          display: flex;
-          width: max-content;
-          animation: marquee 25s linear infinite;
+          display: flex; width: max-content; animation: marquee 25s linear infinite;
         }
         .animate-marquee:hover {
           animation-play-state: paused;
@@ -122,7 +129,7 @@ export default function AboutUs() {
       </section>
 
       {/* ================= OUR STORY & VISION ================= */}
-      <section className="story-container max-w-[1200px] mx-auto px-6 md:px-12 pb-20 md:pb-32 flex flex-col gap-20 md:gap-32">
+      <section className="story-container max-w-[1200px] mx-auto px-6 md:px-12 pb-20 md:pb-15 flex flex-col gap-20 md:gap-10">
         
         {/* Row 1: Our Story */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
@@ -130,14 +137,12 @@ export default function AboutUs() {
             <h2 className="text-[#6A2834] text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
               Our Story
             </h2>
-            <p className="text-gray-800 text-sm md:text-base font-bold mb-2">Concept:</p>
-            <p className="text-gray-800 text-sm md:text-base leading-relaxed">
-              The Anantara Event Hall is the crown jewel of the Parekkat Convention Centre, offering a premier space for a variety of high-profile events. The Anantara Event Hall combines elegance, flexibility, and top-notch facilities to ensure your event is unforgettable. Whether you are planning a lavish wedding, a corporate conference, or a live entertainment show, Anantara provides the perfect setting to make your event a success.
-            </p>
+            <p className="text-[#6C031D] text-sm md:text-base font-bold mb-2">
+            Ray Vijay Centre for Conventions was created with a vision to redefine celebrations through elegance, luxury, and unforgettable experiences. Designed as a destination for weddings, corporate gatherings, and cultural events, the convention centre blends sophisticated spaces with exceptional hospitality. Every corner of Ray Vijay Centre reflects our commitment to creating memorable moments where people come together to celebrate life’s most special occasions.</p>
           </div>
-          <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1 md:order-2">
+          <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1 md:order-2 rounded-2xl">
             <img 
-              src="/about-us-img1.png" 
+              src="/about-us-img1.webp" 
               alt="Our Story Celebration" 
               className="w-full h-full object-cover"
             />
@@ -146,9 +151,9 @@ export default function AboutUs() {
 
         {/* Row 2: Our Vision */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1">
+          <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1 rounded-2xl">
             <img 
-              src="/about-us-img2.png" 
+              src="/about-us-img2.webp" 
               alt="Our Vision Banquet" 
               className="w-full h-full object-cover"
             />
@@ -157,89 +162,77 @@ export default function AboutUs() {
             <h2 className="text-[#6A2834] text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
               Our vision
             </h2>
-            <p className="text-gray-800 text-sm md:text-base font-bold mb-2">Concept:</p>
-            <p className="text-gray-800 text-sm md:text-base leading-relaxed">
-              The Anantara Event Hall is the crown jewel of the Parekkat Convention Centre, offering a premier space for a variety of high-profile events. The Anantara Event Hall combines elegance, flexibility, and top-notch facilities to ensure your event is unforgettable. Whether you are planning a lavish wedding, a corporate conference, or a live entertainment show, Anantara provides the perfect setting to make your event a success.
-            </p>
+            <p className="text-[#6C031D] text-sm md:text-base font-bold mb-2">
+            Ray Vijay Centre for Conventions is designed to be a landmark destination for weddings, corporate gatherings, and grand celebrations. Combining elegant architecture, versatile event spaces, and premium hospitality, the convention centre creates unforgettable experiences for every occasion. Whether hosting luxurious weddings, business conferences, or cultural events, Ray offers the perfect setting with sophistication, comfort, and world-class event facilities.</p>
+            
           </div>
         </div>
 
       </section>
 
-      {/* ================= PARTNERS SECTION ================= */}
-      <section className="partners-section bg-[#fdfaf6] py-20 md:py-28 px-6 text-center overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="partners-fade-in text-3xl md:text-5xl font-serif text-[#6A2834] uppercase tracking-widest mb-6">
-            Our Partners
-          </h2>
-          <p className="partners-fade-in text-gray-600 text-sm md:text-base font-light max-w-2xl mx-auto mb-16 leading-relaxed">
-            We work with event partners who provide unparalleled expertise and creativity, ensuring your event at 60 Great Queen Street is flawlessly executed.
-          </p>
-
-          {/* Sliding Logos Wrapper */}
-          <div className="partners-fade-in relative w-full overflow-hidden mb-16">
-            {/* The inner track that physically slides */}
-            <div className="animate-marquee gap-10 md:gap-16 lg:gap-24 items-center">
-              
-              {/* Render Set 1 */}
-              {partnerLogos.map((logo, index) => (
-                <div key={`set1-${index}`} className="shrink-0 flex items-center justify-center w-32 md:w-48 h-20">
-                  <img 
-                    src={logo.src} 
-                    alt={logo.name} 
-                    className="max-w-full max-h-full object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                  />
-                </div>
-              ))}
-              
-              {/* Render Set 2 (Exact duplicate to create the seamless loop) */}
-              {partnerLogos.map((logo, index) => (
-                <div key={`set2-${index}`} className="shrink-0 flex items-center justify-center w-32 md:w-48 h-20">
-                  <img 
-                    src={logo.src} 
-                    alt={logo.name} 
-                    className="max-w-full max-h-full object-contain opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                  />
-                </div>
-              ))}
-
-            </div>
-          </div>
-
-          <button className="partners-fade-in bg-[#6A2834] text-white text-xs md:text-sm font-bold uppercase tracking-[0.2em] py-4 px-10 hover:bg-[#4d1d26] transition-colors duration-300">
-            Learn More
-          </button>
-        </div>
-      </section>
-
-      {/* ================= EXHIBITIONS BANNER ================= */}
+      {/* ================= EXHIBITIONS BANNER (AUTO-SLIDER WITH VARIED ANIMATIONS) ================= */}
       <section className="exhibitions-section relative w-full h-[600px] md:h-[700px] bg-gray-900 overflow-hidden flex items-end">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/path-to-exhibition-image.png')" }} 
-        ></div>
+        
+        {/* Dynamic Image Backgrounds */}
+        {exhibitionImages.map((imgSrc, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-all duration-[1200ms] ease-in-out ${
+              index === currentSlide ? activeAnimation : outAnimations[index]
+            }`}
+            style={{ backgroundImage: `url('${imgSrc}')` }}
+          ></div>
+        ))}
+        
+        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
         <div className="exhibition-content relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 pb-12 md:pb-20">
           <p className="text-white text-xs md:text-sm tracking-[0.3em] uppercase mb-2">Event</p>
           <h2 className="text-white text-4xl md:text-6xl font-medium mb-4">EXHIBITIONS</h2>
           <p className="text-white/80 text-sm md:text-base max-w-xl font-light leading-relaxed mb-10">
-            Exhibitions venue with Presence, Prestige and Purpose Take a look inside Scroll for more A central London.
+           Experience our exhibitions, defined by presence, prestige, and purpose, set in the heart of Trivandrum.
           </p>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="flex gap-4">
-              <button className="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
+              {/* Previous Button */}
+              <button 
+                onClick={prevSlide}
+                className="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
+                aria-label="Previous image"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
               </button>
-              <button className="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
+              
+              {/* Next Button */}
+              <button 
+                onClick={nextSlide}
+                className="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
+                aria-label="Next image"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
               </button>
             </div>
+            
+            {/* Slide Indicators */}
+            <div className="hidden sm:flex gap-2">
+              {exhibitionImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentSlide ? "bg-white w-6" : "bg-white/50 hover:bg-white/80"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+
             <button className="border border-white/50 text-white text-xs md:text-sm tracking-[0.2em] uppercase py-3 px-8 hover:bg-white hover:text-black transition-colors">
               Enquire Now
             </button>
@@ -248,25 +241,25 @@ export default function AboutUs() {
       </section>
 
       {/* ================= CTA SECTION ================= */}
-      <section className="px-6 md:px-12 py-20 md:pb-32 max-w-[1200px] mx-auto">
+      <section className="px-6 md:px-12 py-20 md:py-15 mx-auto">
         <div 
           ref={ctaSectionRef} 
-          className="bg-[#5e1927] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
+          className="bg-[#800000] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
         >
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4">
-            Get In Touch
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4 font-['Inter']">
+            Planning an Event?
           </h3>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
-            Want A Schedule Visit / Book A Event ?
+          <h2 className="font-['Inter'] text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
+            Schedule a visit or book your event today.
           </h2>
           
           <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
-            Reach Out To Us To See How We Can Do It For You. Let's Join Hands For A Great Future..
+            Reach out to us to see how we can do it for you. Let’s join hands for a great future..
           </p>
 
           <Link 
             href="/contact" 
-            className="bg-white text-[#5e1927] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+            className="font-['Inter'] bg-white text-[#800000] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
           >
             Contact Us
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -275,6 +268,7 @@ export default function AboutUs() {
           </Link>
         </div>
       </section>
+
     </main>
   );
 }

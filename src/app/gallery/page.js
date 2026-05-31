@@ -111,7 +111,7 @@ export default function Gallery() {
       </section>
 
       {/* ================= IMAGE GRID ================= */}
-      <section className="px-6 md:px-12 pb-20 md:pb-32 max-w-[1400px] mx-auto min-h-[50vh]">
+      <section className="px-6 md:px-12 pb-10 md:pb-10 max-w-[1400px] mx-auto min-h-[50vh]">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-10">
           {filteredImages.length > 0 ? (
             filteredImages.map((image) => (
@@ -141,31 +141,34 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* ================= CTA SECTION ================= */}
-      <section className="cta-section px-6 md:px-12 pb-20 md:pb-32 max-w-[1200px] mx-auto">
-        <div className="cta-container bg-[#5e1927] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden">
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4">
-            Get In Touch
-          </h3>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
-            Want A Schedule Visit / Book A Event ?
-          </h2>
-          
-          <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
-            Reach Out To Us To See How We Can Do It For You. Let's Join Hands For A Great Future..
-          </p>
+{/* ================= CTA SECTION ================= */}
+<section className="px-6 md:px-12 py-5 md:py-5 mx-auto">
+  <div 
+   
+    className="bg-[#800000] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
+  >
+    <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4 font-['Inter']">
+      Planning an Event?
+    </h3>
+    <h2 className="font-['Inter'] text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
+      Schedule a visit or book your event today.
+    </h2>
+    
+    <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
+      Reach out to us to see how we can do it for you. Let’s join hands for a great future..
+    </p>
 
-          <Link 
-            href="/contact" 
-            className="bg-white text-[#5e1927] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg"
-          >
-            Contact Us
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-              <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+    <Link 
+      href="/contact" 
+      className="font-['Inter'] bg-white text-[#800000] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+    >
+      Contact Us
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+        <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
+      </svg>
+    </Link>
+  </div>
+</section>
 
     </main>
   );

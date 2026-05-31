@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 // Register the ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -13,55 +14,45 @@ if (typeof window !== "undefined") {
 
 export default function Home() {
   const router = useRouter();
-  const heroTextRef = useRef(null);
+  const mainRef = useRef(null);
+  const heroSectionRef = useRef(null);
+  const heroBgRef = useRef(null);
+  const heroContentRef = useRef(null);
   const welcomeSectionRef = useRef(null);
   const spacesSectionRef = useRef(null);
-  const testimonialsSectionRef = useRef(null);
   const ctaSectionRef = useRef(null);
-  const mainRef = useRef(null);
 
-  // Data for the Welcome section stats
+  // [Your existing stats, spacesData, and featuresData arrays stay exactly the same here]
   const stats = [
-    { target: 8, suffix: "", text: "Dedicated Halls" },
-    { target: 25, suffix: "", text: "Years of Service" },
-    { target: 3500, suffix: "", text: "Years of Service" },
-    { target: 4000, suffix: "+", text: "Happy Customers" },
+    { target: 7, suffix: "", text: "Dedicated Halls" },
+    { target: 25000, suffix: "+", text: "Sq. Ft Venue Space" },
+    { target: 4000, suffix: "+", text: "Guest Capacity" },
+    { target: 500, suffix: "+", text: "Parking Capacity" },
   ];
 
-  // Data for the Spaces section
   const spacesData = [
     {
-      title: "The Vestibules",
-      description:
-        "Connected to The Grand Temple, The Vestibules embody sophistication and charm. Available for exclusive hire, this remarkable space effortlessly transforms into three distinct areas using ornate dividing doors.",
-      image: "/spaces-features-section-img-1.jpg",
+      title: "RAY SIGNATURE",
+      description: "Luxury banquet space designed for grand weddings, receptions, and premium celebrations. Featuring elegant interiors and a sophisticated ambiance for unforgettable events.",
+      image: "/spaces-features-section-img-1.webp",
     },
     {
-      title: "The Grand Temple",
-      description:
-        "Immerse yourself in the awe-inspiring grandeur of the Grand Temple featuring a meticulously handcrafted mosaic ceiling and a timeless sense of elegance.",
-      image: "/spaces-features-section-img-2.jpg",
+      title: "RAY BANQUET",
+      description: "Elegant event hall crafted for receptions, corporate gatherings, and social celebrations. Blending luxury interiors with spacious comfort for memorable guest experiences.",
+      image: "/spaces-features-section-img-2.webp",
     },
     {
-      title: "The Tower Doors & Foyer",
-      description:
-        "The iconic bronze doors, a striking centrepiece in the heart of Covent Garden, are only open exclusively to invited guests. Beyond these majestic doors lies a marble entrance hall, leading to the original cloakroom.",
-      image: "/spaces-features-section-img-3.jpg",
+      title: "RAY HERITAGE",
+      description: "Modern conference and private event space designed for business meetings and exclusive gatherings. Offering a refined atmosphere with comfort, privacy, and professional elegance.",
+      image: "/spaces-features-section-img-3.webp",
     },
   ];
 
-  // Data for the Features section
   const featuresData = [
     {
       title: "Fully Air-Conditioned",
       description: "Climate-controlled comfort throughout all venues",
-      icon: (
-  <img 
-    src="/air.svg" 
-    alt="air" 
-    className="w-10 h-10" 
-  />
-),
+      icon: <Image src="/air.svg" alt="air" width={40} height={40} className="w-10 h-10" />,
     },
     {
       title: "Advanced AV Systems",
@@ -93,41 +84,20 @@ export default function Home() {
     },
   ];
 
-  // Data for the Testimonials
-  const testimonialsData = [
-    {
-      name: "Jenny Wilson",
-      company: "Grower.io",
-      text: "We love Landingfolio! Our designers were using it for their projects, so we already knew what kind of design they want.",
-      image: "/testimatials-section-img-1.png",
-    },
-    {
-      name: "Devon Lane",
-      company: "DLDesign.co",
-      text: "We love Landingfolio! Our designers were using it for their projects, so we already knew what kind of design they want.",
-      image: "/testimatials-section-img-2.png",
-    },
-  ];
-
-  // Navigation handler with GSAP animation
   const handleContactClick = (e) => {
     e.preventDefault();
-    
-    // Create exit animation timeline
     const tl = gsap.timeline({
       onComplete: () => {
         router.push("/contact");
       }
     });
 
-    // Animate out the main content
     tl.to(mainRef.current, {
       opacity: 0,
       y: -50,
       duration: 0.8,
       ease: "power2.inOut",
-    })
-    .to(mainRef.current, {
+    }).to(mainRef.current, {
       scale: 0.95,
       duration: 0.3,
       ease: "power2.in",
@@ -135,21 +105,47 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // 1. Hero Section Animation
-    gsap.fromTo(
-      heroTextRef.current,
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, duration: 1.2, ease: "power3.out", delay: 0.2 }
-    );
-
+    // We use matchMedia in GSAP to handle mobile vs desktop parallax differently if needed,
+    // but the relative yPercent method works well across both.
     const ctx = gsap.context(() => {
+      
+      // 1. Hero Parallax Animation
+      gsap.to(heroBgRef.current, {
+        yPercent: 20, // Slightly reduced for smoother mobile experience
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroSectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(heroContentRef.current, {
+        yPercent: -15,
+        opacity: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroSectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // Hero Text Entrance
+      gsap.fromTo(
+        heroContentRef.current,
+        { opacity: 0, y: 30 }, // Changed from x: -50 to y: 30 for a cleaner fade up on mobile
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out", delay: 0.3 }
+      );
+
       // 2. Welcome Section Animations
       gsap.from(".welcome-anim", {
         y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power2.out",
         scrollTrigger: { trigger: welcomeSectionRef.current, start: "top 80%", toggleActions: "play none none reverse" },
       });
 
-      // Welcome Counter Animation
       const counterElements = gsap.utils.toArray(".counter-value");
       counterElements.forEach((counter, index) => {
         const targetValue = parseInt(counter.getAttribute("data-target"), 10);
@@ -182,32 +178,7 @@ export default function Home() {
         scrollTrigger: { trigger: ".features-container", start: "top 85%", toggleActions: "play none none reverse" },
       });
 
-      // 4. Testimonial Section Animations
-      gsap.from(".testimonial-header", {
-        y: 30, opacity: 0, duration: 0.8, ease: "power2.out",
-        scrollTrigger: { trigger: testimonialsSectionRef.current, start: "top 80%", toggleActions: "play none none reverse" },
-      });
-
-      // Testimonial Counter Animation
-      const testimonialCounters = gsap.utils.toArray(".testimonial-counter");
-      testimonialCounters.forEach((counter) => {
-        const targetValue = parseInt(counter.getAttribute("data-target"), 10);
-        const proxy = { val: 0 };
-        gsap.to(proxy, {
-          val: targetValue, 
-          duration: 2, 
-          ease: "power3.out",
-          onUpdate: () => { counter.innerText = Math.ceil(proxy.val); },
-          scrollTrigger: { trigger: testimonialsSectionRef.current, start: "top 80%", toggleActions: "play none none reverse" },
-        });
-      });
-
-      gsap.from(".testimonial-card", {
-        y: 40, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out",
-        scrollTrigger: { trigger: ".testimonial-header", start: "top 60%", toggleActions: "play none none reverse" },
-      });
-
-      // 5. CTA Section Animation
+      // 4. CTA Section Animation
       gsap.fromTo(ctaSectionRef.current,
         { opacity: 0, scale: 0.95, y: 30 },
         { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "power2.out", scrollTrigger: { trigger: ctaSectionRef.current, start: "top 85%", toggleActions: "play none none reverse" } }
@@ -220,49 +191,90 @@ export default function Home() {
 
   return (
     <main ref={mainRef} className="bg-white min-h-screen overflow-hidden">
+      
       {/* ================= HERO SECTION ================= */}
       <section
-        className="relative w-full h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/home-page-hero-secion-img.png')" }}
+        ref={heroSectionRef}
+        // Using svh (small viewport height) prevents the UI jumping on mobile browsers when scrolling
+        className="relative w-full h-[100svh] min-h-[600px] flex items-center overflow-hidden bg-[#Fdfaf5]"
       >
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative z-10 px-4 md:px-8 text-center w-full max-w-6xl mx-auto">
-          <h1
-            ref={heroTextRef}
-            className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-normal tracking-wide uppercase leading-snug md:leading-tight"
-          >
-            An iconic venue in the heart <br className="hidden md:block" /> of Covent Garden.
-          </h1>
+        <div 
+          ref={heroBgRef}
+          className="absolute inset-0 w-full h-[120%] -top-[10%] z-0"
+        >
+          <Image 
+            src="/home-page-hero-secion-img.png" 
+            alt="Grand Convention Interior"
+            fill
+            priority
+            className="object-cover object-center opacity-60 md:opacity-100" 
+          />
+          {/* Changed gradient to bottom-up on mobile, left-right on desktop for better readability */}
+          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#Fdfaf5]/90 via-[#Fdfaf5]/70 md:via-[#Fdfaf5]/60 to-transparent md:w-2/3 z-10" />
+        </div>
+
+        <div 
+          ref={heroContentRef}
+          className="relative z-20 px-4 sm:px-8 md:px-16 lg:px-32 w-full max-w-[1400px] mx-auto flex flex-col justify-center mt-12 md:mt-0"
+        >
+          {/* Center text on mobile, left-align on desktop */}
+          <div className="max-w-2xl text-center md:text-left mx-auto md:mx-0">
+            <h2 className="text-[#6A4A3C] text-xs sm:text-sm md:text-base font-medium tracking-[0.2em] md:tracking-[0.3em] uppercase mb-3 md:mb-4">
+              Crafted For
+            </h2>
+            <h1 className="text-[#5A3A2C] text-5xl sm:text-6xl md:text-7xl lg:text-[85px] font-serif leading-[1.1] mb-5 md:mb-6">
+              GRAND <br className="hidden sm:block" /> OCCASIONS.
+            </h1>
+            
+            {/* Flourish centered on mobile */}
+            <div className="flex items-center justify-center md:justify-start gap-3 md:gap-4 max-w-[200px] sm:max-w-[250px] md:max-w-sm mx-auto md:mx-0">
+              <div className="h-[1px] flex-1 bg-[#6A4A3C]/40"></div>
+              <svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#6A4A3C] shrink-0">
+                <path d="M20 0L25 10L20 20L15 10L20 0Z" fill="currentColor"/>
+                <circle cx="10" cy="10" r="2" fill="currentColor"/>
+                <circle cx="30" cy="10" r="2" fill="currentColor"/>
+              </svg>
+              <div className="h-[1px] flex-1 bg-[#6A4A3C]/40"></div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ================= WELCOME SECTION ================= */}
       <section ref={welcomeSectionRef} className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto text-[#6A2834]">
         <h2 className="welcome-anim text-3xl md:text-5xl lg:text-[52px] font-serif uppercase tracking-wide leading-tight mb-16 md:mb-24 text-left">
-          Welcome to Ray Vijay <br className="hidden md:block" /> Centre for Convention.
+          Welcome to Ray Vijay <br className="hidden md:block" /> Centre for Conventions
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
           <div className="flex flex-col gap-10 md:gap-14">
-            {stats.map((stat, index) => (
-              <div key={index} className="welcome-anim flex items-center gap-6 md:gap-8">
-                <div className="text-6xl md:text-[80px] font-serif text-black leading-none w-[160px] md:w-[240px] text-right shrink-0 flex justify-end">
-                  <span className="counter-value" data-target={stat.target}>0</span>
-                  <span>{stat.suffix}</span>
-                </div>
-                <span className="text-xl md:text-3xl font-serif text-[#6A2834] leading-snug">
-                  {stat.text}
-                </span>
-              </div>
-            ))}
+           {stats.map((stat, index) => (
+  <div key={index} className="welcome-anim flex items-center gap-4 md:gap-6 lg:gap-8">
+    {/* FIXED: 
+      1. Changed fixed widths to min-widths (min-w-[160px] md:min-w-[220px] lg:min-w-[260px])
+      2. Smoothed out the font size scaling (text-5xl -> text-6xl -> text-[80px])
+    */}
+    <div className="text-5xl md:text-6xl lg:text-[80px] text-black leading-none min-w-[160px] md:min-w-[220px] lg:min-w-[260px] text-right shrink-0 flex justify-end">
+      <span className="counter-value" data-target={stat.target}>0</span>
+      <span>{stat.suffix}</span>
+    </div>
+    
+    {/* Smoothed out the text sizing here as well to match the new proportions */}
+    <span className="text-lg md:text-2xl lg:text-3xl font-serif text-[#6A2834] leading-snug">
+      {stat.text}
+    </span>
+  </div>
+))}
           </div>
 
           <div className="flex flex-col items-start pt-4 md:pt-2 lg:pl-10">
             <h3 className="welcome-anim text-lg md:text-xl font-bold uppercase tracking-widest mb-6 leading-snug">
-              An exquisite art deco icon nestled in the heart of Covent Garden.
+              A PLACE WHERE EVERY OCCASION BECOMES EXTRAORDINARY
             </h3>
             <p className="welcome-anim text-base md:text-lg mb-10 leading-relaxed font-light text-[#6A2834]/90">
-              This Grade II* listed venue is a masterpiece of timeless elegance, showcasing breathtaking architecture and opulent interiors. From the awe-inspiring mosaic ceilings of the Grand Temple to the enchanting intimacy of its unique spaces, every corner of this historic landmark tells a story of grandeur and heritage. Whether you&apos;re hosting a grand event or an intimate gathering, 60 Great Queen Street promises an unforgettable experience from the moment you step inside.
+              From lavish wedding receptions and elegant engagement ceremonies to corporate conferences and rooftop celebrations, every venue at Ray Vijay Centre for Conventions is thoughtfully designed to deliver sophistication, comfort, and unforgettable experiences.
+              <br /><br />
+              Whether you are planning an intimate gathering or a grand event, our versatile spaces and dedicated hospitality team ensure every detail is flawlessly executed.
             </p>
             <button className="welcome-anim bg-[#6A2834] text-white text-sm md:text-base font-bold uppercase tracking-[0.2em] py-4 px-8 hover:bg-[#4d1d26] transition-colors duration-300">
               View Brochure
@@ -275,19 +287,25 @@ export default function Home() {
       <section ref={spacesSectionRef} className="relative w-full pt-16 md:pt-20">
         <div className="absolute inset-0 z-0 flex flex-col">
           <div className="h-48 md:h-64 bg-white w-full"></div>
-          <div className="flex-1 bg-[#5e1927] w-full"></div>
+          <div className="flex-1 bg-[#6C031D] w-full"></div>
         </div>
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pb-24 md:pb-32">
-          <h2 className="spaces-title text-[#6A2834] text-2xl md:text-3xl lg:text-4xl font-serif uppercase tracking-widest mb-10 md:mb-16">
+          <h2 className="spaces-title text-[#7F3947] text-2xl md:text-3xl lg:text-4xl font-serif uppercase tracking-widest mb-10 md:mb-16">
             Spaces
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
             {spacesData.map((space, index) => (
               <div key={index} className="space-card flex flex-col group cursor-pointer">
-                <div className="w-full aspect-[3/4] md:aspect-[2/3] overflow-hidden bg-gray-200">
-                  <img src={space.image} alt={space.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="relative w-full aspect-[3/4] md:aspect-[2/3] overflow-hidden bg-gray-200">
+                  <Image 
+                    src={space.image} 
+                    alt={space.title} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                  />
                 </div>
                 <div className="pt-8 pb-4 pr-4">
                   <h3 className="text-white text-2xl md:text-3xl lg:text-4xl font-serif mb-4">{space.title}</h3>
@@ -298,7 +316,10 @@ export default function Home() {
           </div>
 
           <div className="w-full flex justify-center mt-8 md:mt-16">
-            <button className="spaces-btn border border-white/40 text-white bg-white/5 hover:bg-white/20 backdrop-blur-sm text-xs md:text-sm font-bold uppercase tracking-[0.2em] py-4 px-10 transition-colors duration-300">
+            <button 
+              onClick={() => router.push("/venue-hall")}
+              className="spaces-btn border border-white/40 text-white bg-white/5 hover:bg-white/20 backdrop-blur-sm text-xs md:text-sm font-bold uppercase tracking-[0.2em] py-4 px-10 transition-colors duration-300"
+            >
               View All Spaces
             </button>
           </div>
@@ -308,7 +329,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 text-center">
               {featuresData.map((feature, index) => (
                 <div key={index} className="feature-card flex flex-col items-center">
-                  <div className="text-[#c99f36] mb-4">{feature.icon}</div>
+                  <div className="text-[#c99f36] mb-4 flex justify-center">{feature.icon}</div>
                   <h4 className="text-white text-lg md:text-xl font-bold mb-3 tracking-wide">{feature.title}</h4>
                   <p className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-[250px]">{feature.description}</p>
                 </div>
@@ -318,73 +339,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= TESTIMONIALS SECTION ================= */}
-      <section ref={testimonialsSectionRef} className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto text-center">
-        <div className="testimonial-header mb-16 md:mb-24">
-          <p className="text-[#6A2834] text-lg md:text-xl font-serif mb-4">
-            <span className="testimonial-counter" data-target="3940">0</span>+ Happy Landingfolio Users
-          </p>
-          <h2 className="text-[#6A2834] text-4xl md:text-5xl lg:text-6xl font-serif tracking-wide">
-            Don&apos;t just take our words
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 text-left">
-          {testimonialsData.map((testimonial, index) => (
-            <div key={index} className="testimonial-card flex flex-col sm:flex-row items-center sm:items-start gap-6 lg:gap-8">
-              <div className="w-32 h-32 sm:w-40 sm:h-40 shrink-0 overflow-hidden rounded-2xl bg-gray-200 shadow-sm">
-                <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
-              </div>
-              
-              <div className="flex flex-col flex-1 text-center sm:text-left">
-                <div className="flex items-center justify-center sm:justify-start gap-1 mb-4 text-[#c99f36]">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-black text-base md:text-lg font-medium leading-relaxed mb-6">
-                  &quot;{testimonial.text}&quot;
-                </p>
-                <p className="text-sm md:text-base font-bold text-black">
-                  {testimonial.name} <span className="text-gray-400 font-normal ml-2">{testimonial.company}</span>
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-{/* ================= CTA SECTION ================= */}
-      <section className="px-6 md:px-12 pb-20 md:pb-32 max-w-[1200px] mx-auto">
+      {/* ================= CTA SECTION ================= */}
+      <section className="px-6 md:px-12 py-20 md:py-32 mx-auto">
         <div 
           ref={ctaSectionRef} 
-          className="bg-[#5e1927] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden"
+          className="bg-[#800000] rounded-[2rem] p-10 md:p-16 flex flex-col items-start text-left text-white shadow-2xl relative overflow-hidden max-w-7xl mx-auto"
         >
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4">
-            Get In Touch
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-wide mb-3 md:mb-4 font-sans">
+            Planning an Event?
           </h3>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
-            Want A Schedule Visit / Book A Event ?
+          <h2 className="font-sans text-3xl md:text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
+            Schedule a visit or book your event today.
           </h2>
           
           <p className="text-white/80 text-base md:text-lg font-light leading-relaxed mb-10 max-w-xl">
-            Reach Out To Us To See How We Can Do It For You. Let's Join Hands For A Great Future..
+            Reach out to us to see how we can do it for you. Let’s join hands for a great future.
           </p>
 
-          {/* Changed <button> to <Link> and added href="/contact" */}
-          <Link 
-            href="/contact" 
-            className="bg-white text-[#5e1927] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+          <button 
+            onClick={handleContactClick}
+            className="font-sans bg-white text-[#800000] inline-flex items-center gap-3 text-sm md:text-base font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300"
           >
             Contact Us
-            {/* Arrow Circle SVG */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
               <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
             </svg>
-          </Link>
+          </button>
         </div>
-      </section>    </main>
+      </section>
+    
+    </main>
   );
 }
