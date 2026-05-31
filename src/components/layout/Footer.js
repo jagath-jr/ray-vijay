@@ -142,11 +142,19 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright Section */}
-        <div className="copyright-text pt-8 flex justify-center font-inter text-center">
-          <p className="text-white/60 text-xs md:text-sm">
-            © 2026 Ray Vijay Centre for Conventions. All rights reserved.
-          </p>
-        </div>
+<div className="copyright-text pt-8 flex justify-center font-inter text-center">
+  <p className="text-white/60 text-xs md:text-sm">
+    © 2026 Ray Vijay Centre for Conventions. Powered by{" "}
+    <a 
+      href="https://www.duvitra.com/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="hover:text-white transition-colors"
+    >
+      Duvitra
+    </a>.
+  </p>
+</div>
       </div>
     </footer>
   );
