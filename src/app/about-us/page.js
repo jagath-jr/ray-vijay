@@ -138,7 +138,7 @@ export default function AboutUs() {
               Our Story
             </h2>
             <p className="text-[#6C031D] text-sm md:text-base font-bold mb-2">
-            Ray Vijay Centre for Convention was created with a vision to redefine celebrations through elegance, luxury, and unforgettable experiences. Designed as a destination for weddings, corporate gatherings, and cultural events, the convention centre blends sophisticated spaces with exceptional hospitality. Every corner of Ray Vijay Centre reflects our commitment to creating memorable moments where people come together to celebrate life’s most special occasions.</p>
+            Ray Vijay Centre for Conventions was created with a vision to redefine celebrations through elegance, luxury, and unforgettable experiences. Designed as a destination for weddings, corporate gatherings, and cultural events, the convention centre blends sophisticated spaces with exceptional hospitality. Every corner of Ray Vijay Centre reflects our commitment to creating memorable moments where people come together to celebrate life’s most special occasions.</p>
           </div>
           <div className="story-block w-full aspect-square md:aspect-[4/3] bg-gray-200 overflow-hidden order-1 md:order-2 rounded-2xl">
             <img 
@@ -163,7 +163,7 @@ export default function AboutUs() {
               Our vision
             </h2>
             <p className="text-[#6C031D] text-sm md:text-base font-bold mb-2">
-            Ray Vijay Centre for Convention is designed to be a landmark destination for weddings, corporate gatherings, and grand celebrations. Combining elegant architecture, versatile event spaces, and premium hospitality, the convention centre creates unforgettable experiences for every occasion. Whether hosting luxurious weddings, business conferences, or cultural events, Ray offers the perfect setting with sophistication, comfort, and world-class event facilities.</p>
+            Ray Vijay Centre for Conventions is designed to be a landmark destination for weddings, corporate gatherings, and grand celebrations. Combining elegant architecture, versatile event spaces, and premium hospitality, the convention centre creates unforgettable experiences for every occasion. Whether hosting luxurious weddings, business conferences, or cultural events, Ray offers the perfect setting with sophistication, comfort, and world-class event facilities.</p>
             
           </div>
         </div>

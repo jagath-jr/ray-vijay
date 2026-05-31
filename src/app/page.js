@@ -248,17 +248,23 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
           <div className="flex flex-col gap-10 md:gap-14">
-            {stats.map((stat, index) => (
-              <div key={index} className="welcome-anim flex items-center gap-6 md:gap-8">
-                <div className="text-6xl md:text-[80px] text-black leading-none w-[160px] md:w-[240px] text-right shrink-0 flex justify-end">
-                  <span className="counter-value" data-target={stat.target}>0</span>
-                  <span>{stat.suffix}</span>
-                </div>
-                <span className="text-xl md:text-3xl font-serif text-[#6A2834] leading-snug">
-                  {stat.text}
-                </span>
-              </div>
-            ))}
+           {stats.map((stat, index) => (
+  <div key={index} className="welcome-anim flex items-center gap-4 md:gap-6 lg:gap-8">
+    {/* FIXED: 
+      1. Changed fixed widths to min-widths (min-w-[160px] md:min-w-[220px] lg:min-w-[260px])
+      2. Smoothed out the font size scaling (text-5xl -> text-6xl -> text-[80px])
+    */}
+    <div className="text-5xl md:text-6xl lg:text-[80px] text-black leading-none min-w-[160px] md:min-w-[220px] lg:min-w-[260px] text-right shrink-0 flex justify-end">
+      <span className="counter-value" data-target={stat.target}>0</span>
+      <span>{stat.suffix}</span>
+    </div>
+    
+    {/* Smoothed out the text sizing here as well to match the new proportions */}
+    <span className="text-lg md:text-2xl lg:text-3xl font-serif text-[#6A2834] leading-snug">
+      {stat.text}
+    </span>
+  </div>
+))}
           </div>
 
           <div className="flex flex-col items-start pt-4 md:pt-2 lg:pl-10">
