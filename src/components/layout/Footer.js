@@ -74,9 +74,9 @@ export default function Footer() {
             <p className="text-white/80 text-sm font-inter mb-6 tracking-wider">
               for Conventions
             </p>
-            <p className="text-white/80 text-sm leading-relaxed font-inter max-w-xs">
-             Crafted for Grand Occasions
-            </p>
+           <p className="text-white/80 text-sm leading-relaxed font-inter max-w-xs italic">
+  Crafted for Grand Occasions
+</p>
           </div>
 
           {/* Column 2: Quick Links */}
