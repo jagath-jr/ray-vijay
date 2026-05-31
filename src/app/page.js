@@ -24,7 +24,7 @@ export default function Home() {
 
   // [Your existing stats, spacesData, and featuresData arrays stay exactly the same here]
   const stats = [
-    { target: 8, suffix: "", text: "Dedicated Halls" },
+    { target: 7, suffix: "", text: "Dedicated Halls" },
     { target: 25000, suffix: "+", text: "Sq. Ft Venue Space" },
     { target: 4000, suffix: "+", text: "Guest Capacity" },
     { target: 500, suffix: "+", text: "Parking Capacity" },
@@ -111,7 +111,7 @@ export default function Home() {
       
       // 1. Hero Parallax Animation
       gsap.to(heroBgRef.current, {
-        yPercent: 20, // Slightly reduced for smoother mobile experience
+        yPercent: 80, // Slightly reduced for smoother mobile experience
         ease: "none",
         scrollTrigger: {
           trigger: heroSectionRef.current,
@@ -243,7 +243,7 @@ export default function Home() {
       {/* ================= WELCOME SECTION ================= */}
       <section ref={welcomeSectionRef} className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto text-[#6A2834]">
         <h2 className="welcome-anim text-3xl md:text-5xl lg:text-[52px] font-serif uppercase tracking-wide leading-tight mb-16 md:mb-24 text-left">
-          Welcome to Ray Vijay <br className="hidden md:block" /> Centre for Convention.
+          Welcome to Ray Vijay <br className="hidden md:block" /> Centre for Conventions
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
@@ -266,7 +266,7 @@ export default function Home() {
               A PLACE WHERE EVERY OCCASION BECOMES EXTRAORDINARY
             </h3>
             <p className="welcome-anim text-base md:text-lg mb-10 leading-relaxed font-light text-[#6A2834]/90">
-              From lavish wedding receptions and elegant engagement ceremonies to corporate conferences and rooftop celebrations, every venue at Ray Vijay Centre for Convention is thoughtfully designed to deliver sophistication, comfort, and unforgettable experiences.
+              From lavish wedding receptions and elegant engagement ceremonies to corporate conferences and rooftop celebrations, every venue at Ray Vijay Centre for Conventions is thoughtfully designed to deliver sophistication, comfort, and unforgettable experiences.
               <br /><br />
               Whether you are planning an intimate gathering or a grand event, our versatile spaces and dedicated hospitality team ensure every detail is flawlessly executed.
             </p>

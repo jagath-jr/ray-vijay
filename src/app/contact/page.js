@@ -183,8 +183,10 @@ export default function Contact() {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
               </div>
               <h3 className="text-xl font-bold font-['Georgia'] text-gray-900 mb-4">Email Us</h3>
-              <p className="text-gray-600 font-['Inter'] text-sm mb-1">info@rayvijaycenter.com</p>
-              <p className="text-gray-600 font-['Inter'] text-sm mb-4">events@rayvijaycenter.com</p>
+              <p className="text-gray-600 font-['Inter'] text-sm mb-1">
+  <a href="mailto:rayvijaycentre@gmail.com" className="hover:text-[#cba328] transition-colors">rayvijaycentre@gmail.com</a>
+</p>
+              {/* <p className="text-gray-600 font-['Inter'] text-sm mb-4">events@rayvijaycenter.com</p> */}
               <p className="text-gray-400 font-['Inter'] text-xs">We&apos;ll respond within 24 hours</p>
             </div>
 
@@ -194,7 +196,7 @@ export default function Contact() {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
               </div>
               <h3 className="text-xl font-bold font-['Georgia'] text-gray-900 mb-4">Visit Us</h3>
-              <p className="text-gray-600 font-['Inter'] text-sm mb-1">Ray Vijay Centre</p>
+              <p className="text-gray-600 font-['Inter'] text-sm mb-1">Ray Vijay Centre for Conventions</p>
               <p className="text-gray-600 font-['Inter'] text-sm mb-4">Thiruvananthapuram, Kerala</p>
               <p className="text-gray-400 font-['Inter'] text-xs">India - 695001</p>
             </div>
@@ -249,7 +251,7 @@ export default function Contact() {
             </div>
 
             {/* RIGHT FORM AREA */}
-            <div className="form-container w-full lg:w-2/3 bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
+            <div id="booking-form" className="form-container w-full lg:w-2/3 bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
               <p className="text-[#cba328] font-['Inter'] text-sm font-bold uppercase tracking-widest mb-2">Send us a Message</p>
               <h2 className="text-4xl md:text-5xl font-['Georgia']  text-gray-900 mb-4">Book Your Dream Event</h2>
               <p className="text-gray-500 mb-8 font-['Inter']">Fill out the form below and our event specialists will get back to you shortly</p>

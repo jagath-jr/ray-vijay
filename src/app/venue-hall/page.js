@@ -10,104 +10,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-
-// // 1. DATA ARRAY: Add or edit all your venues here easily
-// const venuesData = [
-//   {
-//     id: "ray-signature",
-//     title: "Ray Signature",
-//     subtitle: "Main Hall | Capacity: 1500+ Guests",
-//     description: "The crown jewel of the venue, Ray Signature is designed for grand celebrations, luxury weddings, corporate galas, award ceremonies, and large-scale social events. Featuring elegant interiors, premium lighting, and a majestic ambiance, this space delivers a truly unforgettable experience for every guest.",
-//     boxTitle: "1500+ Guests",
-//     boxSubtitle: "Ideal For:",
-//     list: ["Luxury Weddings", "Receptions", "Corporate Events", "Concerts & Gala Nights"],
-//     // images: ["/ray-signature-img.jpg", "/ray-signature-img-2.jpg", "/ray-signature-img-3.jpg"]
-//     images: ["https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1000&auto=format&fit=crop", 
-//       "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1000&auto=format&fit=crop", 
-//       "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1000&auto=format&fit=crop"]
-//   },
-//   {
-//     id: "ray-heritage",
-//     title: "Ray Heritage",
-//     subtitle: "Mini Hall | Capacity: 600+ Guests",
-//     description: "Ray Heritage blends sophistication with warmth, creating the perfect setting for intimate weddings, family celebrations, engagement ceremonies, and private events. Its timeless design and versatile layout make every gathering feel elegant and personal.",
-//     boxTitle: "600+ Guests",
-//     boxSubtitle: "Ideal For:",
-//     list: ["Engagement Ceremonies", "Birthday Celebrations", "Cultural Events", "Private Gatherings"],
-//     // images: ["/ray-heritage-img.jpg", "/ray-heritage-img-2.jpg", "/ray-heritage-img-3.jpg"]
-//     images: [
-//       "https://picsum.photos/seed/her1/1200/1200", 
-//       "https://picsum.photos/seed/her2/1200/1200", 
-//       "https://picsum.photos/seed/her3/1200/1200"
-//     ]
-//   },
-//   {
-//     id: "ray-banquet",
-//     title: "Ray Banquet",
-//     subtitle: "Banquet Hall | Capacity: 1200+ Guests",
-//     description: "Crafted for grand dinners and majestic celebrations, Ray Banquet offers a stunning environment for large-scale banquets and receptions. A perfect blend of elegance and expansive space for unforgettable moments.",
-//     boxTitle: "1200+ Guests",
-//     boxSubtitle: "Ideal For:",
-//     list: ["Wedding Receptions", "Corporate Conferences", "Social Gatherings", "Premium Banquets"],
-//     // images: ["/ray-banquet-img.jpg", "/ray-banquet-img-2.jpg", "/ray-banquet-img-3.jpg"] // Update paths as needed
-//     images: [
-//       "https://picsum.photos/seed/ban1/1200/1200", 
-//       "https://picsum.photos/seed/ban2/1200/1200", 
-//       "https://picsum.photos/seed/ban3/1200/1200"
-//     ]
-//   },
-//   {
-//     id: "ray-gateway",
-//     title: "Ray Gateway",
-//     subtitle: "Luxury Lobby | 15,000 Sq. Ft.",
-//     description: "An impressive arrival experience sets the tone for your event. Ray Gateway is a grand lobby designed to welcome guests with unparalleled luxury and breathtaking architecture.",
-//     boxTitle: "600+ Guests",
-//     boxSubtitle: "Highlights:",
-//     list: ["Premium Guest Arrival Experience", "Spacious Gathering Area", "Perfect for Welcome Setups & Exhibitions", "Luxury Ambience"],
-//     images: ["/ray-gateway-img.jpg", "/ray-gateway-img-2.jpg", "/ray-gateway-img-3.jpg"]
-//   },
-//   {
-//     id: "ray-prive",
-//     title: "Ray Privé",
-//     subtitle: "Conference Room | Capacity: 150+ Guests",
-//     description: "Ray Privé is an exclusive, state-of-the-art space ideal for high-level meetings and executive conferences. It provides an intimate, focused environment equipped with modern amenities for seamless corporate interactions.",
-//     boxTitle: "150+ Guests",
-//     boxSubtitle: "Ideal For:",
-//     list: ["Business Meetings", "Seminars & Workshops", "Corporate Training", "Executive Conferences"],
-//     images: ["/ray-prive-img.jpg", "/ray-prive-img-2.jpg", "/ray-prive-img-3.jpg"]
-//   },
-//   {
-//     id: "ray-skywalk",
-//     title: "Ray Skywalk",
-//     subtitle: "Rooftop Venue | Capacity: 750+ Guests",
-//     description: "Experience celebrations under the open sky at Ray Skywalk. This rooftop venue provides breathtaking views and a chic atmosphere, ideal for evening parties and social soirées.",
-//     boxTitle: "750+ Guests",
-//     boxSubtitle: "Ideal For:",
-//     list: ["Rooftop Parties", "Cocktail Nights", "Sangeet Events", "Social Celebrations"],
-//     images: ["/ray-skywalk-img.jpg", "/ray-skywalk-img-2.jpg", "/ray-skywalk-img-3.jpg"]
-//   },
-//   {
-//     id: "ray-royal-suites",
-//     title: "Ray Royal Suites",
-//     subtitle: "24 Luxury Rooms",
-//     description: "Designed to provide the ultimate comfort for you and your VIP guests, Ray Royal Suites offer luxurious accommodation. Every room is a haven of relaxation ensuring a premium stay experience.",
-//     boxTitle: "Features:",
-//     boxSubtitle: "",
-//     list: ["Elegant Interiors", "Premium Comfort", "VIP Hospitality", "Luxury Stay Experience"],
-//     images: ["/ray-royal-suites-img.jpg", "/ray-royal-suites-img-2.jpg", "/ray-royal-suites-img-3.jpg"]
-//   },
-//   {
-//     id: "ray-atrium",
-//     title: "Ray Atrium",
-//     subtitle: "Gathering Space | Capacity: 900+ Guests",
-//     description: "Ray Atrium is a beautifully designed open-air space that blends nature with architecture. It's the perfect choice for grand outdoor functions, cultural events, and community gatherings.",
-//     boxTitle: "900+ Guests",
-//     boxSubtitle: "Ideal For:",
-//     list: ["Open-Air Functions", "Cultural Events", "Wedding Ceremonies", "Community Gatherings"],
-//     images: ["/ray-atrium-img.jpg", "/ray-atrium-img-2.jpg", "/ray-atrium-img-3.jpg"]
-//   }
-// ];
-
 // 1. DATA ARRAY: Add or edit all your venues here easily
 const venuesData = [
   {
@@ -118,6 +20,7 @@ const venuesData = [
     boxTitle: "1500+ Guests",
     boxSubtitle: "Ideal For:",
     list: ["Luxury Weddings", "Receptions", "Corporate Events", "Concerts & Gala Nights"],
+    hasAC: true,
     images: [
       "/ray-signature-img.jpg",
       "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
@@ -132,11 +35,11 @@ const venuesData = [
     boxTitle: "1200+ Guests",
     boxSubtitle: "Ideal For:",
     list: ["Wedding Receptions", "Corporate Conferences", "Social Gatherings", "Premium Banquets"],
+    hasAC: true,
     images: [
-      "/ray-banquet-img1.jpg", // Elegant banquet table
-      "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=80", // Premium catering setup
-      "/ray-banquet-img2.jpg"  // Event atmosphere
-    
+      "/ray-banquet-img1.jpg", 
+      "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=80", 
+      "/ray-banquet-img2.jpg"  
     ]
   },
   {
@@ -147,10 +50,11 @@ const venuesData = [
     boxTitle: "600+ Guests",
     boxSubtitle: "Ideal For:",
     list: ["Engagement Ceremonies", "Birthday Celebrations", "Cultural Events", "Private Gatherings"],
+    hasAC: true,
     images: [
-      "ray-heritage-img1.jpg", // Guaranteed working coffee/interior shot
-      "ray-heritage-img2.jpg",  // Guaranteed working architecture shot
-      "ray-heritage-img3.jpg"   // Guaranteed working bridge/lights shot
+      "ray-heritage-img1.jpg", 
+      "ray-heritage-img2.jpg",  
+      "ray-heritage-img3.jpg"   
     ]
   },
   {
@@ -161,6 +65,7 @@ const venuesData = [
     boxTitle: "150+ Guests",
     boxSubtitle: "Ideal For:",
     list: ["Business Meetings", "Seminars & Workshops", "Corporate Training", "Executive Conferences"],
+    hasAC: true,
     images: [
       "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=80",
@@ -175,13 +80,13 @@ const venuesData = [
     boxTitle: "750+ Guests",
     boxSubtitle: "Ideal For:",
     list: ["Rooftop Parties", "Cocktail Nights", "Sangeet Events", "Social Celebrations"],
+    hasAC: true,
     images: [
-      "ray-skywalk-img2.jpg", // Classic Chicago city view
-      "ray-skywalk-img3.jpg", // Evening city lights
-      "ray-skywalk-img1.jpg"  // High rise view
+      "ray-skywalk-img2.jpg", 
+      "ray-skywalk-img3.jpg", 
+      "ray-skywalk-img1.jpg"  
     ]
   },
-  
   {
     id: "ray-gateway",
     title: "Ray Gateway",
@@ -190,14 +95,13 @@ const venuesData = [
     boxTitle: "600+ Guests",
     boxSubtitle: "Highlights:",
     list: ["Premium Guest Arrival Experience", "Spacious Gathering Area", "Perfect for Welcome Setups & Exhibitions", "Luxury Ambience"],
+    hasAC: false, // Turned off AC indicator here
     images: [
       "ray-gateway-img1.png",
       "ray-gateway-img3.png",
       "ray-gateway-img2.png"
     ]
   },
-  
-  
   {
     id: "ray-royal-suites",
     title: "Ray Royal Suites",
@@ -206,6 +110,7 @@ const venuesData = [
     boxTitle: "Features:",
     boxSubtitle: "",
     list: ["Elegant Interiors", "Premium Comfort", "VIP Hospitality", "Luxury Stay Experience"],
+    hasAC: true,
     images: [
       "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80",
       "ray-royalsutes-img1.jpg",
@@ -220,10 +125,11 @@ const venuesData = [
     boxTitle: "900+ Guests",
     boxSubtitle: "Ideal For:",
     list: ["Open-Air Functions", "Cultural Events", "Wedding Ceremonies", "Community Gatherings"],
+    hasAC: false, // Turned off AC indicator here
     images: [
-      "ray-atrium-img1.png", // Permanent image - architecture/glass
-      "ray-atrium-img2.png", // Permanent image - open space
-      "ray-atrium-img3.png"  // Permanent image - structure/nature
+      "ray-atrium-img1.png", 
+      "ray-atrium-img2.png", 
+      "ray-atrium-img3.png"  
     ]
   }
 ];
@@ -237,7 +143,6 @@ const WindIcon = () => (
 
 
 // 2. REUSABLE VENUE COMPONENT
-// This component automatically handles the slider and animations for any venue passed to it.
 const VenueSection = ({ data, isFirst }) => {
   const sectionRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -294,38 +199,50 @@ const VenueSection = ({ data, isFirst }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           
           {/* Left Column: Image Slider */}
-<div className="split-anim relative w-full aspect-square lg:aspect-auto bg-gray-200 group overflow-hidden">
-  {data.images.map((src, index) => (
-    <img 
-      key={index}
-      src={src} 
-      alt={`${data.title} Image ${index + 1}`} 
-      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
-        index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-      }`}
-    />
-  ))}
-  <div className="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/0 z-20 pointer-events-none"></div>
-  
-  {/* 👇 TEMPORARY BLUR LAYER 👇 */}
-  {/* DELETE THIS DIV when the client provides the final images */}
-  <div className="absolute inset-0 backdrop-blur-[3px] bg-white/20 z-20 pointer-events-none"></div>
-  {/* 👆 ======================= 👆 */}
+          <div className="split-anim relative w-full aspect-square lg:aspect-auto bg-gray-200 group overflow-hidden">
+            {data.images.map((src, index) => (
+              <img 
+                key={index}
+                src={src} 
+                alt={`${data.title} Image ${index + 1}`} 
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                  index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
+              />
+            ))}
+            <div className="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/0 z-20 pointer-events-none"></div>
+            
+            {/* 👇 TEMPORARY BLUR LAYER 👇 */}
+            <div className="absolute inset-0 backdrop-blur-[3px] bg-white/20 z-20 pointer-events-none"></div>
+            {/* 👆 ======================= 👆 */}
 
-  {/* Dots Pagination */}
-  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
-    {data.images.map((_, i) => (
-      <button 
-        key={i} 
-        onClick={() => setCurrentSlide(i)}
-        aria-label={`Go to slide ${i + 1}`}
-        className={`w-2.5 h-2.5 rounded-full border border-white transition-colors duration-300 ${
-          i === currentSlide ? 'bg-white' : 'bg-transparent hover:bg-white/50'
-        }`}
-      ></button>
-    ))}
-  </div>
-</div>
+            {/* 👇 LOADING SPINNER & CAPTION OVERLAY 👇 */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-30 pointer-events-none p-6 text-center">
+              <svg className="animate-spin h-10 w-10 text-white mb-4 drop-shadow-md" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <p className="text-white text-sm md:text-base font-medium tracking-wide bg-black/40 px-4 py-2 rounded-lg backdrop-blur-sm shadow-lg">
+                (Representative Images – Actual venue images coming soon...)
+              </p>
+            </div>
+            {/* 👆 ===================================== 👆 */}
+
+            {/* Dots Pagination */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+              {data.images.map((_, i) => (
+                <button 
+                  key={i} 
+                  onClick={() => setCurrentSlide(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  className={`w-2.5 h-2.5 rounded-full border border-white transition-colors duration-300 ${
+                    i === currentSlide ? 'bg-white' : 'bg-transparent hover:bg-white/50'
+                  }`}
+                ></button>
+              ))}
+            </div>
+          </div>
+
           {/* Right Column: Maroon Info Box */}
           <div className="split-anim bg-[#6C031D] p-6 md:p-10 relative flex flex-col justify-center text-white min-h-[400px] lg:min-h-[500px]">
             <div className="absolute inset-4 md:inset-6 border border-white/60 pointer-events-none"></div>
@@ -350,12 +267,17 @@ const VenueSection = ({ data, isFirst }) => {
                   ))}
                 </ul>
               </div>
-              <div className="flex items-center gap-4 mt-8">
-                <WindIcon />
-                <span className="text-lg md:text-xl font-serif tracking-wide text-white/90">
-                  Fully Air-Conditioned
-                </span>
-              </div>
+              
+              {/* Conditional Rendering for Air-Conditioning */}
+              {data.hasAC && (
+                <div className="flex items-center gap-4 mt-8">
+                  <WindIcon />
+                  <span className="text-lg md:text-xl font-serif tracking-wide text-white/90">
+                    Fully Air-Conditioned
+                  </span>
+                </div>
+              )}
+
             </div>
           </div>
         </div>
@@ -385,7 +307,7 @@ export default function VenuesPage() {
   return (
     <main className="bg-white min-h-screen overflow-hidden">
       
-      {/* Loop through all 8 venues dynamically */}
+      {/* Loop through all venues dynamically */}
       {venuesData.map((venue, index) => (
         <VenueSection key={venue.id} data={venue} isFirst={index === 0} />
       ))}

@@ -179,9 +179,10 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-base font-bold font-Garamond flex items-center gap-1 transition-colors duration-300 py-2 ${
                   isActive 
-                    ? "text-[#c99f36] border-b border-[#c99f36]" 
+                    ? "text-[#f7be2d] border-b border-[#f1bb31]" 
                     : isHome && !hasScrolled
-                      ? "text-gray-900 hover:text-[#c99f36]"
+                
+                      ? "text-white hover:text-[#c99f36] [text-shadow:0_0_20px_black,_0_0_15px_black,_0_2px_5px_black]"
                       : "text-gray-900 hover:text-[#c99f36]"
                 }`}
               >
@@ -191,8 +192,7 @@ export default function Navbar() {
                     <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
                   </svg>
                 )}
-              </Link>
-              
+              </Link>              
               {/* Desktop Dropdown */}
               {link.hasDropdown && link.subLinks && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0">
@@ -214,9 +214,12 @@ export default function Navbar() {
 
       {/* ================= DESKTOP CTA BUTTON ================= */}
       <div className="hidden lg:block relative z-50 animate-nav-item opacity-0">
-        <button className="bg-[#cba328] hover:bg-[#b38e21] text-white text-sm font-medium px-6 py-3 rounded-md transition-colors duration-300 shadow-md">
+        <Link 
+          href="/contact#booking-form"
+          className="inline-block bg-[#cba328] hover:bg-[#b38e21] text-white text-sm font-medium px-6 py-3 rounded-md transition-colors duration-300 shadow-md"
+        >
           Book Your Event
-        </button>
+        </Link>
       </div>
 
       {/* ================= MOBILE HAMBURGER BUTTON ================= */}
@@ -322,9 +325,13 @@ export default function Navbar() {
           </div>
           
           <div className="mt-8 pt-6 border-t border-gray-100 mobile-nav-item opacity-0">
-            <button className="bg-[#cba328] w-full text-white text-lg font-medium px-6 py-4 rounded-md shadow-md active:scale-[0.98] transition-transform">
+            <Link 
+              href="/contact#booking-form"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-center bg-[#cba328] w-full text-white text-lg font-medium px-6 py-4 rounded-md shadow-md active:scale-[0.98] transition-transform"
+            >
               Book Your Event
-            </button>
+            </Link>
           </div>
 
         </div>

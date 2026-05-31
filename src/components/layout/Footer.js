@@ -75,7 +75,7 @@ export default function Footer() {
               for Conventions
             </p>
             <p className="text-white/80 text-sm leading-relaxed font-inter max-w-xs">
-              A Landmark Destination for Grand Celebrations in Thiruvananthapuram
+             Crafted for Grand Occasions
             </p>
           </div>
 
@@ -105,10 +105,10 @@ export default function Footer() {
               <li>
                 Email:{" "}
                 <a
-                  href="mailto:info@rayvijaycenter.com"
+                  href="mailto:rayvijaycentre@gmail.com"
                   className="hover:text-[#cba328] transition-colors"
                 >
-                  info@rayvijaycenter.com
+                  rayvijaycentre@gmail.com
                 </a>
               </li>
             </ul>
