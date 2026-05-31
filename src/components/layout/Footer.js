@@ -149,7 +149,7 @@ export default function Footer() {
       href="https://www.duvitra.com/" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="hover:text-[#cba328] transition-colors"
+      className="hover:text-[#cba328] underline transition-colors"
     >
       Duvitra
     </a>.
