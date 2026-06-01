@@ -52,9 +52,9 @@ const venuesData = [
     list: ["Engagement Ceremonies", "Birthday Celebrations", "Cultural Events", "Private Gatherings"],
     hasAC: true,
     images: [
-      "ray-heritage-img1.jpg", 
-      "ray-heritage-img2.jpg",  
-      "ray-heritage-img3.jpg"   
+      "/ray-heritage-img1.jpg", 
+      "/ray-heritage-img2.jpg",  
+      "/ray-heritage-img3.jpg"   
     ]
   },
   {
@@ -213,7 +213,7 @@ const VenueSection = ({ data, isFirst }) => {
             <div className="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/0 z-20 pointer-events-none"></div>
             
             {/* 👇 TEMPORARY BLUR LAYER 👇 */}
-            <div className="absolute inset-0 backdrop-blur-[3px] bg-white/20 z-20 pointer-events-none"></div>
+            <div className="absolute inset-0 backdrop-blur-[5px] bg-white/20 z-20 pointer-events-none"></div>
             {/* 👆 ======================= 👆 */}
 
             {/* 👇 LOADING SPINNER & CAPTION OVERLAY 👇 */}
