@@ -22,7 +22,7 @@ const venuesData = [
     list: ["Luxury Weddings", "Receptions", "Corporate Events", "Concerts & Gala Nights"],
     hasAC: true,
     images: [
-      "/ray-signature-img.jpg",
+      "/ray-signature-img.webp",
       "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80"
     ]
@@ -37,9 +37,9 @@ const venuesData = [
     list: ["Wedding Receptions", "Corporate Conferences", "Social Gatherings", "Premium Banquets"],
     hasAC: true,
     images: [
-      "/ray-banquet-img1.jpg", 
+      "/ray-banquet-img1.webp", 
       "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=80", 
-      "/ray-banquet-img2.jpg"  
+      "/ray-banquet-img2.webp"  
     ]
   },
   {
@@ -52,9 +52,9 @@ const venuesData = [
     list: ["Engagement Ceremonies", "Birthday Celebrations", "Cultural Events", "Private Gatherings"],
     hasAC: true,
     images: [
-      "/ray-heritage-img1.jpg", 
-      "/ray-heritage-img2.jpg",  
-      "/ray-heritage-img3.jpg"   
+      "/ray-heritage-img1.webp", 
+      "/ray-heritage-img2.webp",  
+      "/ray-heritage-img3.webp"   
     ]
   },
   {
@@ -82,9 +82,9 @@ const venuesData = [
     list: ["Rooftop Parties", "Cocktail Nights", "Sangeet Events", "Social Celebrations"],
     hasAC: false,
     images: [
-      "ray-skywalk-img2.jpg", 
-      "ray-skywalk-img3.jpg", 
-      "ray-skywalk-img1.jpg"  
+      "ray-skywalk-img2.webp", 
+      "ray-skywalk-img3.webp", 
+      "ray-skywalk-img1.webp"  
     ]
   },
   {
@@ -97,9 +97,9 @@ const venuesData = [
     list: ["Premium Guest Arrival Experience", "Spacious Gathering Area", "Perfect for Welcome Setups & Exhibitions", "Luxury Ambience"],
     hasAC: false, // Turned off AC indicator here
     images: [
-      "ray-gateway-img1.png",
-      "ray-gateway-img3.png",
-      "ray-gateway-img2.png"
+      "ray-gateway-img1.webp",
+      "ray-gateway-img3.webp",
+      "ray-gateway-img2.webp"
     ]
   },
   {
@@ -113,7 +113,7 @@ const venuesData = [
     hasAC: true,
     images: [
       "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80",
-      "ray-royalsutes-img1.jpg",
+      "ray-royalsutes-img1.webp",
       "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80"
     ]
   },
@@ -127,9 +127,9 @@ const venuesData = [
     list: ["Open-Air Functions", "Cultural Events", "Wedding Ceremonies", "Community Gatherings"],
     hasAC: false, // Turned off AC indicator here
     images: [
-      "ray-atrium-img1.png", 
-      "ray-atrium-img2.png", 
-      "ray-atrium-img3.png"  
+      "ray-atrium-img1.webp", 
+      "ray-atrium-img2.webp", 
+      "ray-atrium-img3.webp"  
     ]
   }
 ];
