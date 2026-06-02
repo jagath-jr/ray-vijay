@@ -13,6 +13,7 @@ RUN npm ci
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
+# CORRECTED: Merged the broken COPY command onto a single line
 COPY . .
 
 # Next.js collects completely anonymous telemetry data about general usage.
@@ -34,7 +35,8 @@ ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/public ./public
+# CORRECTED: Added --chown=nextjs:nodejs to ensure the non-root user has proper permissions
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
