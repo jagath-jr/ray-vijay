@@ -202,14 +202,14 @@ export default function Home() {
           ref={heroBgRef}
           className="absolute inset-0 w-full h-[120%] -top-[10%] z-0"
         >
-          <Image 
-            src="/home-page-hero-secion-img.png" 
-            alt="Grand Convention Interior"
-            fill
-            priority
-            className="object-cover object-center opacity-60 md:opacity-100" 
-          />
-          {/* Changed gradient to bottom-up on mobile, left-right on desktop for better readability */}
+<Image 
+  src="/home-page-hero-secion-img.png" 
+  alt="Grand Convention Interior"
+  fill
+  priority
+  className="object-cover object-center opacity-60 md:opacity-100"
+  style={{ filter: 'blur(2px)' }}
+/>          {/* Changed gradient to bottom-up on mobile, left-right on desktop for better readability */}
           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#Fdfaf5]/90 via-[#Fdfaf5]/70 md:via-[#Fdfaf5]/60 to-transparent md:w-2/3 z-10" />
         </div>
 

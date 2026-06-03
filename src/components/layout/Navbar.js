@@ -23,10 +23,9 @@ export default function Navbar() {
   
   const isHome = pathname === "/";
 
-  // --- NEW: Handle Click/Touch Outside to Close Menu ---
+  // --- Handle Click/Touch Outside to Close Menu ---
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Close menu if it's open AND the touch/click is outside both the drawer and the hamburger button
       if (
         isMobileMenuOpen && 
         drawerRef.current && !drawerRef.current.contains(event.target) &&
@@ -36,7 +35,6 @@ export default function Navbar() {
       }
     };
 
-    // Listen for standard clicks and mobile screen touches
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside, { passive: true });
 
@@ -46,7 +44,7 @@ export default function Navbar() {
     };
   }, [isMobileMenuOpen]);
 
-  // 1. GSAP Initial Load Animation (Desktop & Top Bar)
+  // 1. GSAP Initial Load Animation
   useEffect(() => {
     let ctx = gsap.context(() => {
       gsap.fromTo(
@@ -138,7 +136,6 @@ export default function Navbar() {
         { name: "Ray Atrium", href: "/venue-hall#ray-atrium" }
       ]
     },
-    // { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -150,73 +147,81 @@ export default function Navbar() {
   return (
     <nav 
       ref={navRef}
-      className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between pr-4 md:pr-8 lg:pr-12 transition-all duration-300 ease-in-out ${
+      /* --- Main nav is now transparent to allow the pill to float --- */
+      className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between pr-4 md:pr-8 lg:pr-12 transition-all duration-300 ease-in-out bg-transparent py-4 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      } ${
-        hasScrolled ? "bg-white/95 shadow-md backdrop-blur-sm" : "bg-transparent"
       }`}
     >
       
       {/* ================= LOGO AREA ================= */}
-      <div className="px-4 md:px-8 py-3 md:py-4 min-w-[120px] md:min-w-[180px] flex justify-center items-center relative z-50 bg-transparent animate-nav-item opacity-0">
+      <div className="px-4 md:px-8 py-2 min-w-[120px] md:min-w-[180px] flex justify-center items-center relative z-50 bg-transparent animate-nav-item opacity-0">
         <Link href="/">
           <img 
             src="/Logo.png" 
             alt="Ray Vijay Centre For Conventions" 
-            className="h-14 md:h-25 object-contain"
+            className="h-14 md:h-25 object-contain drop-shadow-md"
           />
         </Link>
       </div>
 
-      {/* ================= DESKTOP NAVIGATION ================= */}
-      <div className="hidden lg:flex items-center gap-10">
-        {navLinks.map((link, index) => {
-          const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+      {/* ================= DESKTOP NAVIGATION (GLASS PILL) ================= */}
+      <div className="hidden lg:flex items-center justify-center flex-1">
+        
+        {/* The Glass Pill Container */}
+        <div className={`flex items-center gap-8 px-8 py-3 rounded-full transition-all duration-500 ${
+          hasScrolled 
+            ? "bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]" 
+            : "bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)]"
+        }`}>
+          
+          {navLinks.map((link, index) => {
+            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
 
-          return (
-            <div key={index} className="relative group animate-nav-item opacity-0">
+            return (
+              <div key={index} className="relative group animate-nav-item opacity-0">
               <Link 
-                href={link.href}
-                className={`text-base font-bold font-Garamond flex items-center gap-1 transition-colors duration-300 py-2 ${
-                  isActive 
-                    ? "text-[#f7be2d] border-b border-[#f1bb31]" 
-                    : isHome && !hasScrolled
+  href={link.href}
+  className={`text-lg tracking-wide font-black flex items-center gap-1 transition-colors duration-300 ${
+    isActive 
+      ? "text-[#ebb01a] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" 
+      : "text-black/80 hover:text-[#ffce53] hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+  }`}
+>
+  {link.name}
+  {link.hasDropdown && (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 mt-0.5 opacity-70 group-hover:opacity-100 transition-opacity">
+      <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+    </svg>
+  )}
+</Link>
                 
-                      ? "text-white hover:text-[#c99f36] [text-shadow:0_0_20px_black,_0_0_15px_black,_0_2px_5px_black]"
-                      : "text-gray-900 hover:text-[#c99f36]"
-                }`}
-              >
-                {link.name}
-                {link.hasDropdown && (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 mt-0.5">
-                    <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-                  </svg>
+                {/* Desktop Dropdown (Centered under parent) */}
+                {link.hasDropdown && link.subLinks && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 bg-white/95 backdrop-blur-md shadow-xl rounded-2xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 border border-gray-100">
+                    <div className="py-2">
+                      {link.subLinks.map((subLink, i) => (
+                        <Link 
+                          key={i} 
+                          href={subLink.href}
+                          className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#c99f36] transition-colors"
+                        >
+                          {subLink.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 )}
-              </Link>              
-              {/* Desktop Dropdown */}
-              {link.hasDropdown && link.subLinks && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0">
-                  {link.subLinks.map((subLink, i) => (
-                    <Link 
-                      key={i} 
-                      href={subLink.href}
-                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#c99f36] transition-colors"
-                    >
-                      {subLink.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* ================= DESKTOP CTA BUTTON ================= */}
       <div className="hidden lg:block relative z-50 animate-nav-item opacity-0">
         <Link 
           href="/contact#booking-form"
-          className="inline-block bg-[#cba328] hover:bg-[#b38e21] text-white text-sm font-medium px-6 py-3 rounded-md transition-colors duration-300 shadow-md"
+          className="inline-block bg-[#cba328] hover:bg-[#b38e21] text-white text-sm font-medium px-6 py-3 rounded-full transition-colors duration-300 shadow-lg shadow-[#cba328]/30"
         >
           Book Your Event
         </Link>
@@ -225,9 +230,9 @@ export default function Navbar() {
       {/* ================= MOBILE HAMBURGER BUTTON ================= */}
       <div className="lg:hidden flex items-center relative z-50 animate-nav-item opacity-0">
         <button 
-          ref={hamburgerRef} // Attached ref here
+          ref={hamburgerRef}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-gray-900 focus:outline-none p-2 bg-white/70 rounded-md backdrop-blur-md shadow-sm"
+          className="text-gray-900 focus:outline-none p-2 bg-white/70 rounded-full backdrop-blur-md shadow-sm"
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? (
@@ -248,11 +253,11 @@ export default function Navbar() {
           isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={() => setIsMobileMenuOpen(false)}
-        onTouchStart={() => setIsMobileMenuOpen(false)} // Added touch fallback to the overlay itself
+        onTouchStart={() => setIsMobileMenuOpen(false)}
       ></div>
 
       <div 
-        ref={drawerRef} // Attached ref here
+        ref={drawerRef}
         className={`fixed top-0 right-0 h-[100dvh] w-[85%] max-w-[350px] bg-white z-40 shadow-2xl transition-transform duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] lg:hidden overflow-y-auto ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -318,7 +323,6 @@ export default function Navbar() {
                       </div>
                     </div>
                   )}
-
                 </div>
               );
             })}
@@ -328,7 +332,7 @@ export default function Navbar() {
             <Link 
               href="/contact#booking-form"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block text-center bg-[#cba328] w-full text-white text-lg font-medium px-6 py-4 rounded-md shadow-md active:scale-[0.98] transition-transform"
+              className="block text-center bg-[#cba328] w-full text-white text-lg font-medium px-6 py-4 rounded-full shadow-md active:scale-[0.98] transition-transform"
             >
               Book Your Event
             </Link>
